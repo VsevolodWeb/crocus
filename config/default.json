@@ -1,0 +1,5 @@
+{
+	"port": 5000,
+	"jwtSecret": "Vsevolod Crocus Velikie Luki",
+	"mongoURI": "mongodb+srv://vsevolod:1Lpbth15@cluster0-itwds.mongodb.net/test?retryWrites=true&w=majority"
+}
