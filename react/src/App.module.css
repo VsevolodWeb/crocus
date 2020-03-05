@@ -1,0 +1,43 @@
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
+.logoWrapper {
+  float: left;
+  margin-right: 80px;
+  width: 140px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.logo {
+  background-image: url("./images/logo.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.mainArea {
+  padding: 0 50px;
+  margin-top: 64px
+}
+
+.content {
+  background-color: #fff;
+  padding: 32px;
+  min-height: 380px;
+}
+
+.breadcrumbs {
+  margin: 16px 0;
+}
+
+.footer {
+  text-align: center;
+}
