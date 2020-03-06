@@ -3,7 +3,7 @@ import {Table, Typography, Tag, Button, Spin, Switch} from "antd";
 import { CheckOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
 import s from "./Products.module.css";
 import {state, StateProductType} from "../../../state/state";
-import expandedRowRender from "./expandedRowRender";
+import expandedRowRender from "./ExpandedRowRender/ExpandedRowRender";
 import {ColumnsType} from "antd/lib/table";
 const { Title } = Typography;
 

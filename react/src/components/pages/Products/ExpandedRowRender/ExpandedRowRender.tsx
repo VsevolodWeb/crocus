@@ -1,10 +1,10 @@
 import React from "react";
-import {StateProductType} from "../../../state/state";
 import {Col, Row, Descriptions, Button} from "antd";
-import PicturesWall from "./PicturesWall";
-import s from "./expandedRowRender.module.css";
+import {StateProductType} from "../../../../state/state";
+import PicturesWall from "./../PicturesWall/PicturesWall";
+import s from "./ExpandedRowRender.module.css";
 
-const expandedRowRender = (product: StateProductType) => {
+const ExpandedRowRender = (product: StateProductType) => {
 	return <Row>
 		<Col span={12}>
 			<Descriptions column={2}>
@@ -20,4 +20,4 @@ const expandedRowRender = (product: StateProductType) => {
 	</Row>
 };
 
-export default expandedRowRender
+export default ExpandedRowRender

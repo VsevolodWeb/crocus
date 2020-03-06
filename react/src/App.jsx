@@ -1,18 +1,21 @@
 import React from 'react'
 import {Breadcrumb, Col, Layout, Row} from 'antd';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-
+import {Provider} from "react-redux";
 import s from './App.module.css';
 import Products from "./components/pages/Products/Products";
 import Categories from "./components/pages/Categories/Categories";
 import MenuComponent from "./components/common/Menu/Menu";
+import store from "./redux/store";
+
 
 const {Header, Content, Footer} = Layout;
 
 const App = () => {
 	return (
 		<Router>
-			<Layout>
+			<Provider store={store}>
+				<Layout>
 				<Header className={s.header}>
 					<Row>
 						<Col span={4}>
@@ -41,6 +44,7 @@ const App = () => {
 				</Content>
 				<Footer className={s.footer}>Crocus ©2020 Created by Vsevolod Ivanov</Footer>
 			</Layout>
+			</Provider>
 		</Router>
 	);
 };

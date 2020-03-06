@@ -79,7 +79,7 @@ class PicturesWall extends React.Component<PropsType, StateType> {
 		const { previewVisible, previewImage, fileList } = this.state;
 
 		return (
-			<div className="clearfix">
+			<div>
 				<Upload
 					action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
 					listType="picture-card"
