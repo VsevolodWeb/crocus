@@ -3,10 +3,10 @@ import {Breadcrumb, Col, Layout, Row} from 'antd';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import s from './App.module.css';
-import Products from "./components/pages/Products/Products";
 import Categories from "./components/pages/Categories/Categories";
 import MenuComponent from "./components/common/Menu/Menu";
 import store from "./redux/store";
+import ProductsContainer from "./components/pages/Products/ProductsContainer";
 
 
 const {Header, Content, Footer} = Layout;
@@ -35,7 +35,7 @@ const App = () => {
 					</Breadcrumb>
 					<div className={s.content}>
 						<Route exact path="/">
-							<Products/>
+							<ProductsContainer/>
 						</Route>
 						<Route path="/categories">
 							<Categories/>

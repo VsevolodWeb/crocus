@@ -1,23 +1,24 @@
+export type ProductType = {
+	key: number
+	name: string
+	category: string
+	description: string
+	price: string
+	tags: Array<string>
+	floweringTime: string
+	flowerDiameter: string
+	plantHeight: string
+	plantingLocation: string
+	frostResistance: string
+	isPublished: boolean
+	inStock: boolean
+	minAmount: number
+	photos: Array<string>
+}
+
 type InitialStateType = {
-	products: [
-		{
-			key: number
-			name: string
-			category: string
-			description: string
-			price: string
-			tags: Array<string>
-			floweringTime: string
-			flowerDiameter: string
-			plantHeight: string
-			plantingLocation: string
-			frostResistance: string
-			isPublished: boolean
-			inStock: boolean
-			minAmount: number
-			photos: Array<string>
-		}
-	]
+	products: Array<ProductType>
+	loading: boolean
 }
 
 const initialState: InitialStateType = {
@@ -39,7 +40,8 @@ const initialState: InitialStateType = {
 			minAmount: 1,
 			photos: ["https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg", "https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg", "https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg"]
 		}
-	]
+	],
+	loading: false
 };
 
 //type ActionsTypes = SetInitializationActionType;
