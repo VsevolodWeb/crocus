@@ -8,16 +8,17 @@ const {Title} = Typography;
 type PropsType = {
 	columns: ColumnsType<ProductType>
 	products: Array<ProductType>
+	loading: boolean
 }
 
 const Products = (props: PropsType) => {
 	return <>
 		<Title>Товары</Title>
-		<Spin spinning={this.state.loading}>
+		<Spin spinning={props.loading}>
 			<Table
 				columns={props.columns}
 				expandedRowRender={expandedRowRender}
-				dataSource={this.state.productsList}
+				dataSource={props.products}
 			/>
 		</Spin>
 	</>

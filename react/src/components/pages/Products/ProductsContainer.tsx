@@ -13,27 +13,35 @@ type StateType = {
 	loading: boolean
 }
 
-type PropsType = {
+type OwnType = {};
+type MapDispatchToPropsType = {};
+type MapStateToPropsType = {
 	products: Array<ProductType>
 }
+type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnType;
 
 class ProductsContainer extends React.Component<PropsType, StateType> {
 	columns: ColumnsType<ProductType>;
 
-	constructor(props: any) {
+	constructor(props: PropsType) {
 		super(props);
 
+		this.state = {
+			loading: false
+		};
+
 		this.columns = [{
-				title: "Наличие", key: 'quickActions',
-				render: () => <Switch
-					checkedChildren={<CheckOutlined/>}
-					unCheckedChildren={<CloseOutlined/>}
-					onChange={this.switchLoading}
-					defaultChecked/>
-			},
+			title: "Наличие", key: 'quickActions',
+			render: () => <Switch
+				checkedChildren={<CheckOutlined/>}
+				unCheckedChildren={<CloseOutlined/>}
+				onChange={this.switchLoading}
+				defaultChecked/>
+		},
 			{title: 'Наименование товара', dataIndex: 'name', key: 'name'},
 			{title: 'Цена', dataIndex: 'price', key: 'price'},
-			{title: 'Бэйджи', key: 'tags', dataIndex: 'tags',
+			{
+				title: 'Бэйджи', key: 'tags', dataIndex: 'tags',
 				render: (tags: Array<string>) => (
 					<div className={s.tagsWrapper}>
 						{tags.map((tag: string) => {
@@ -48,7 +56,8 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 			{title: 'Высота растения', dataIndex: 'plantHeight', key: 'plantHeight'},
 			{title: 'Местоположение', dataIndex: 'plantingLocation', key: 'plantingLocation'},
 			{title: 'Морозостойкость', dataIndex: 'frostResistance', key: 'frostResistance'},
-			{key: 'mainActions',
+			{
+				key: 'mainActions',
 				render: () => <Button shape="circle" icon={<EditOutlined/>} title="Редактировать товар"/>
 			}
 		];
@@ -63,12 +72,12 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	};
 
 	render() {
-		return <Products columns={this.columns} products={this.props.products}/>
+		return <Products columns={this.columns} products={this.props.products} loading={this.state.loading}/>
 	}
 }
 
-const mapStateToProps = (state: AppStateType) => ({
-	products: state.products
+const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
+	products: state.products.list
 });
 
-export default connect(mapStateToProps)(Products);
+export default connect(mapStateToProps)(ProductsContainer);

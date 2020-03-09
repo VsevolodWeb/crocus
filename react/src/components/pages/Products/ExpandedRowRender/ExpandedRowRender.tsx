@@ -1,10 +1,10 @@
 import React from "react";
 import {Col, Row, Descriptions, Button} from "antd";
-import {StateProductType} from "../../../../state/state";
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
+import {ProductType} from "../../../../redux/products-reducer";
 
-const ExpandedRowRender = (product: StateProductType) => {
+const ExpandedRowRender = (product: ProductType) => {
 	return <Row>
 		<Col span={12}>
 			<Descriptions column={2}>

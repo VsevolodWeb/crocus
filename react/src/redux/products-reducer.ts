@@ -17,12 +17,12 @@ export type ProductType = {
 }
 
 type InitialStateType = {
-	products: Array<ProductType>
+	list: Array<ProductType>
 	loading: boolean
 }
 
 const initialState: InitialStateType = {
-	products: [
+	list: [
 		{
 			key: 1,
 			name: "Астильба Арендса «Color Flash»",
