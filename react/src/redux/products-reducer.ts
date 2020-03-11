@@ -1,3 +1,5 @@
+import {UploadFile} from "antd/lib/upload/interface";
+
 export type ProductType = {
 	key: number
 	name: string
@@ -13,7 +15,7 @@ export type ProductType = {
 	isPublished: boolean
 	inStock: boolean
 	minAmount: number
-	photos: Array<string>
+	photos: Array<UploadFile>
 }
 
 type InitialStateType = {
@@ -38,7 +40,20 @@ const initialState: InitialStateType = {
 			isPublished: true,
 			inStock: true,
 			minAmount: 1,
-			photos: ["https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg", "https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg", "https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg"]
+			photos: [
+				{
+					uid: '1',
+					url: 'https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg',
+				},
+				{
+					uid: '2',
+					url: 'https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg',
+				},
+				{
+					uid: '3',
+					url: 'https://crocus-vl.ru/images/mnogoletniki/astilby/color_flash.jpg',
+				}
+			] as Array<UploadFile>
 		}
 	],
 	loading: false

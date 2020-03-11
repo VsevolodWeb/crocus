@@ -19,7 +19,7 @@ function getBase64(file: any) {
 }
 
 type PropsType = {
-	photos: Array<string>
+	photos: Array<UploadFile>
 }
 
 type StateType = {
@@ -32,32 +32,7 @@ class PicturesWall extends React.Component<PropsType, StateType> {
 	state = {
 		previewVisible: false,
 		previewImage: '',
-		fileList: [
-			{
-				uid: '-1',
-				name: 'image.png',
-				status: 'done',
-				url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-			},
-			{
-				uid: '-2',
-				name: 'image.png',
-				status: 'done',
-				url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-			},
-			{
-				uid: '-3',
-				name: 'image.png',
-				status: 'done',
-				url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-			},
-			{
-				uid: '-4',
-				name: 'image.png',
-				status: 'done',
-				url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-			}
-		] as Array<UploadFile>
+		fileList: this.props.photos
 	};
 
 	handleCancel = () => this.setState({ previewVisible: false });
