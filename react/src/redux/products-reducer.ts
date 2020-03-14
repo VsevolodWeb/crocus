@@ -1,5 +1,7 @@
 import {UploadFile} from "antd/lib/upload/interface";
 
+const SET_LOADING = "SET_LOADING";
+
 export type ProductType = {
 	key: number
 	name: string
@@ -59,17 +61,23 @@ const initialState: InitialStateType = {
 	loading: false
 };
 
-//type ActionsTypes = SetInitializationActionType;
+type ActionsTypes = SetLoadingActionCreatorType;
 
-const productsReducer = (state = initialState, action: any): InitialStateType => {
+const productsReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 	switch (action.type) {
-		case "case": {
-			return state;
+		case SET_LOADING: {
+			return {...state, loading: action.loading}
 		}
 		default: {
 			return state;
 		}
 	}
 };
+
+export type SetLoadingActionCreatorType = {
+	type: typeof SET_LOADING
+	loading: boolean
+}
+export const setLoadingActionCreator = (loading: boolean): SetLoadingActionCreatorType => ({type: SET_LOADING, loading});
 
 export default productsReducer;

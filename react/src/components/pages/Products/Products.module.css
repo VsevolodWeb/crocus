@@ -6,3 +6,9 @@
 .tagsWrapper :global(.ant-tag) {
 	margin-bottom: 8px;
 }
+
+.buttonsWrapper {
+	display: inline-grid;
+	grid-auto-flow: column;
+	grid-gap: 5px;
+}
