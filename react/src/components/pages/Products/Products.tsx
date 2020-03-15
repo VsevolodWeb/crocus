@@ -9,7 +9,6 @@ type PropsType = {
 	columns: ColumnsType<ProductType>
 	products: Array<ProductType>
 	loading: boolean
-	editable: boolean
 }
 
 const Products = (props: PropsType) => {

@@ -6,12 +6,16 @@ import s from "./Products.module.css";
 import {ColumnsType} from "antd/lib/table";
 import Products from "./Products";
 import {AppStateType} from "../../../redux/store";
-import {ProductType, setLoadingActionCreator, SetLoadingActionCreatorType} from "../../../redux/products-reducer";
+import {ProductType,
+	setLoadingActionCreator, SetLoadingActionCreatorType,
+	switchStockActionCreator, SwitchStockActionCreatorType
+} from "../../../redux/products-reducer";
 
 
 type OwnType = {};
 type MapDispatchToPropsType = {
 	setLoading: (loading: boolean) => SetLoadingActionCreatorType
+	switchStock: (productId: number) => SwitchStockActionCreatorType
 };
 type MapStateToPropsType = {
 	loading: boolean
@@ -34,11 +38,13 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 
 		this.columns = [{
 			title: "Наличие", key: 'quickActions',
-			render: () => <Switch
-				checkedChildren={<CheckOutlined/>}
-				unCheckedChildren={<CloseOutlined/>}
-				onChange={this.switchLoading}
-				defaultChecked/>
+			render: (product: ProductType) => (
+				<Switch
+					checkedChildren={<CheckOutlined/>}
+					unCheckedChildren={<CloseOutlined/>}
+					onChange={this.switchLoading}
+					checked={product.inStock}
+				/>)
 			},
 			{title: 'Наименование товара', dataIndex: 'name', key: 'name'},
 			{title: 'Цена', dataIndex: 'price', key: 'price'},
@@ -86,7 +92,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	};
 
 	render() {
-		return <Products columns={this.columns} products={this.props.products} loading={this.props.loading} editable={this.state.editable}/>
+		return <Products columns={this.columns} products={this.props.products} loading={this.props.loading}/>
 	}
 }
 
@@ -97,5 +103,5 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
 
 export default connect<MapStateToPropsType, MapDispatchToPropsType, OwnType, AppStateType>(
 	mapStateToProps,
-	{setLoading: setLoadingActionCreator}
+	{setLoading: setLoadingActionCreator, switchStock: switchStockActionCreator}
 )(ProductsContainer);
