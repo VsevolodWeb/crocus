@@ -23,14 +23,14 @@ type MapStateToPropsType = {
 }
 type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnType;
 type StateType = {
-	editable: boolean
+	editableProductId: number | null
 }
 
 class ProductsContainer extends React.Component<PropsType, StateType> {
 	columns: ColumnsType<ProductType>;
 
 	state = {
-		editable: false
+		editableProductId: null
 	};
 
 	constructor(props: PropsType) {
@@ -38,13 +38,15 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 
 		this.columns = [{
 			title: "Наличие", key: 'quickActions',
-			render: (product: ProductType) => (
-				<Switch
-					checkedChildren={<CheckOutlined/>}
-					unCheckedChildren={<CloseOutlined/>}
-					onChange={this.switchLoading}
-					checked={product.inStock}
-				/>)
+			render: (product: ProductType) => {
+				return (this.state.editableProductId === product.key) ? null
+					: <Switch
+						checkedChildren={<CheckOutlined/>}
+						unCheckedChildren={<CloseOutlined/>}
+						onChange={this.switchStock(product.key)}
+						checked={product.inStock}
+					/>
+			}
 			},
 			{title: 'Наименование товара', dataIndex: 'name', key: 'name'},
 			{title: 'Цена', dataIndex: 'price', key: 'price'},
@@ -64,31 +66,40 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 			{title: 'Морозостойкость', dataIndex: 'frostResistance', key: 'frostResistance'},
 			{
 				key: 'mainActions',
-				render: () => {
+				render: (product: ProductType) => {
 					return <div className={s.buttonsWrapper}>
-						{this.state.editable ?
+						{(this.state.editableProductId === product.key) ?
 							<>
-								<Button shape="circle" icon={<SaveOutlined />} title="Сохранить" onClick={this.switchEditable}/>
-								<Button shape="circle" icon={<CloseOutlined />} title="Выйти из режима редактирования без сохранения" onClick={this.switchEditable}/>
+								<Button shape="circle" icon={<SaveOutlined />} title="Сохранить"
+								        onClick={this.switchEditable(product.key)}/>
+								<Button shape="circle" icon={<CloseOutlined />} title="Выйти из режима редактирования без сохранения"
+								        onClick={this.switchEditable(product.key)}/>
 							</>
 						:
-						<Button shape="circle" icon={<EditOutlined/>} title="Редактировать товар" onClick={this.switchEditable}/>}
+						<Button shape="circle" icon={<EditOutlined/>} title="Редактировать товар"
+						        onClick={this.switchEditable(product.key)}/>}
 					</div>
 				}
 			}
 		];
 	}
 
-	switchEditable = () => {
-		this.setState({editable: !this.state.editable});
+	switchEditable = (productId: number) => {
+		return () => {
+			!this.state.editableProductId ? this.setState({editableProductId: productId})
+				: this.setState({editableProductId: null})
+		}
 	};
 
-	switchLoading = () => {
-		this.props.setLoading(true);
+	switchStock = (productId: number) => {
+		return () => {
+			this.props.setLoading(true);
+			this.props.switchStock(productId);
 
-		setTimeout(() => {
-			this.props.setLoading(false);
-		}, 2000);
+			setTimeout(() => {
+				this.props.setLoading(false);
+			}, 2000);
+		}
 	};
 
 	render() {

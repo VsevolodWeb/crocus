@@ -4,7 +4,7 @@ const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
 
 export type ProductType = {
-	id: number
+	key: number
 	name: string
 	category: string
 	description: string
@@ -29,7 +29,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
 	list: [
 		{
-			id: 1,
+			key: 1,
 			name: "Астильба Арендса «Color Flash»",
 			category: "Астильбы",
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -59,7 +59,7 @@ const initialState: InitialStateType = {
 			] as Array<UploadFile>
 		},
 		{
-			id: 2,
+			key: 2,
 			name: "Астильба Арендса «Color Flash»",
 			category: "Астильбы",
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -100,7 +100,9 @@ const productsReducer = (state = initialState, action: ActionsTypes): InitialSta
 			return {...state, loading: action.loading}
 		}
 		case SWITCH_STOCK: {
-			return {...state, list: state.list.filter((product: ProductType) => product.id !== action.productId)}
+			return {...state, list: state.list.map((product: ProductType) => {
+					return product.key === action.productId ? {...product, inStock: !product.inStock} : product;
+				})}
 		}
 		default: {
 			return state;
