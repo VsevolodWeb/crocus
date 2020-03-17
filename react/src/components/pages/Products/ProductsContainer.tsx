@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {Button, Switch, Tag} from "antd";
+import {Button, Input, Switch, Tag} from "antd";
 import {CheckOutlined, CloseOutlined, EditOutlined, SaveOutlined} from '@ant-design/icons';
 import s from "./Products.module.css";
 import {ColumnsType} from "antd/lib/table";
@@ -48,8 +48,20 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 					/>
 			}
 			},
-			{title: 'Наименование товара', dataIndex: 'name', key: 'name'},
-			{title: 'Цена', dataIndex: 'price', key: 'price'},
+			{title: 'Наименование товара', key: 'name',
+				render: (product: ProductType) => {
+					return (this.state.editableProductId === product.key)
+						? <Input placeholder="Наименование" defaultValue={product.name}/>
+						: product.name
+				}
+			},
+			{title: 'Цена', key: 'price',
+				render: (product: ProductType) => {
+					return (this.state.editableProductId === product.key)
+						? <Input suffix="₽" defaultValue={product.price}/>
+						: product.price
+				}
+			},
 			{
 				title: 'Бэйджи', key: 'tags', dataIndex: 'tags',
 				render: (tags: Array<string>) => (

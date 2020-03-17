@@ -8,7 +8,7 @@ export type ProductType = {
 	name: string
 	category: string
 	description: string
-	price: string
+	price: number
 	tags: Array<string>
 	floweringTime: string
 	flowerDiameter: string
@@ -33,7 +33,7 @@ const initialState: InitialStateType = {
 			name: "Астильба Арендса «Color Flash»",
 			category: "Астильбы",
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-			price: "250 ₽",
+			price: 250,
 			tags: ["Хит продаж", "Акция", "Новинка"],
 			floweringTime: "август-сентябрь",
 			flowerDiameter: "до 1 см.",
@@ -63,7 +63,7 @@ const initialState: InitialStateType = {
 			name: "Астильба Арендса «Color Flash»",
 			category: "Астильбы",
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-			price: "250 ₽",
+			price: 990,
 			tags: ["Хит продаж", "Акция", "Новинка"],
 			floweringTime: "август-сентябрь",
 			flowerDiameter: "до 1 см.",
