@@ -71,11 +71,6 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 						})}
 					</div>)
 			},
-			{title: 'Время цветения', dataIndex: 'floweringTime', key: 'floweringTime'},
-			{title: 'Диаметр цветка', dataIndex: 'flowerDiameter', key: 'flowerDiameter'},
-			{title: 'Высота растения', dataIndex: 'plantHeight', key: 'plantHeight'},
-			{title: 'Местоположение', dataIndex: 'plantingLocation', key: 'plantingLocation'},
-			{title: 'Морозостойкость', dataIndex: 'frostResistance', key: 'frostResistance'},
 			{
 				key: 'mainActions',
 				render: (product: ProductType) => {
