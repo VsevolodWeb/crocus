@@ -4,7 +4,8 @@ import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
 import {ProductType} from "../../../../redux/products-reducer";
 
-const ExpandedRowRender = (product: ProductType, index, indent, expanded) => {
+const ExpandedRowRender = (product: ProductType, index:number , indent:number, expanded:boolean) => {
+	console.log(index, expanded);
 	return <Row>
 		<Col span={12}>
 			<Descriptions column={3}>

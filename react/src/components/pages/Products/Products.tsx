@@ -8,10 +8,12 @@ const {Title} = Typography;
 type PropsType = {
 	columns: ColumnsType<ProductType>
 	products: Array<ProductType>
-	loading: boolean
+	loading: boolean,
+	expandCurrentRow: () => any
 }
 
 const Products = (props: PropsType) => {
+
 	return <>
 		<Title>Товары</Title>
 		<Spin spinning={props.loading}>
@@ -19,6 +21,7 @@ const Products = (props: PropsType) => {
 				columns={props.columns}
 				expandedRowRender={expandedRowRender}
 				dataSource={props.products}
+				defaultExpandedRowKeys={[1, 2]}
 			/>
 		</Spin>
 	</>
