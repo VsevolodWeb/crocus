@@ -91,11 +91,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 		];
 	}
 
-	expandCurrentRow = () => {
-
-	};
 	switchEditable = (productId: number) => {
-		this.expandCurrentRow();
 		return () => {
 			!this.state.editableProductId ? this.setState({editableProductId: productId})
 				: this.setState({editableProductId: null})
@@ -116,8 +112,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	render() {
 		return <Products columns={this.columns}
 		                 products={this.props.products}
-		                 loading={this.props.loading}
-		                 expandCurrentRow={this.expandCurrentRow}/>
+		                 loading={this.props.loading}/>
 	}
 }
 

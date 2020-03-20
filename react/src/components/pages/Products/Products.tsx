@@ -9,10 +9,13 @@ type PropsType = {
 	columns: ColumnsType<ProductType>
 	products: Array<ProductType>
 	loading: boolean,
-	expandCurrentRow: () => any
 }
 
 const Products = (props: PropsType) => {
+
+	const expandCurrentRow = (rowIndex: number) => {
+
+	};
 
 	return <>
 		<Title>Товары</Title>
@@ -21,7 +24,7 @@ const Products = (props: PropsType) => {
 				columns={props.columns}
 				expandedRowRender={expandedRowRender}
 				dataSource={props.products}
-				defaultExpandedRowKeys={[1, 2]}
+				onRow={(i, a) => 1}
 			/>
 		</Spin>
 	</>
