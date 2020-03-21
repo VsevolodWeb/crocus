@@ -58,7 +58,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 			{title: 'Цена', key: 'price',
 				render: (product: ProductType) => {
 					return (this.state.editableProductId === product.key)
-						? <Input suffix="₽" defaultValue={product.price}/>
+						? <Input suffix="₽" defaultValue={product.price} type="number"/>
 						: product.price
 				}
 			},
@@ -112,7 +112,8 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	render() {
 		return <Products columns={this.columns}
 		                 products={this.props.products}
-		                 loading={this.props.loading}/>
+		                 loading={this.props.loading}
+		                 editableProductId={this.state.editableProductId}/>
 	}
 }
 

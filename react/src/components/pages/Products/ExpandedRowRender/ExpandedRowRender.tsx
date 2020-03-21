@@ -1,16 +1,22 @@
 import React from "react";
-import {Button, Col, Descriptions, Row} from "antd";
+import {Button, Col, Descriptions, Input, Row} from "antd";
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
 import {ProductType} from "../../../../redux/products-reducer";
 
-const ExpandedRowRender = (product: ProductType, index: number, indent: number, expanded: boolean) => {
-	console.log(index, expanded);
+type PropsType = {
+	product: ProductType
+	editableProductId: number | null
+}
+
+const ExpandedRowRender: React.FC<PropsType> = ({product, editableProductId}) => {
 	return (
 		<Row>
 			<Col span={12}>
 				<Descriptions column={3}>
-					<Descriptions.Item label="Категория" span={3}>{product.category}</Descriptions.Item>
+					<Descriptions.Item label="Категория" span={3}>
+						{editableProductId === product.key ? <Input/> : product.category}
+					</Descriptions.Item>
 					<Descriptions.Item label="Время цветения">{product.floweringTime}</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">{product.flowerDiameter}</Descriptions.Item>
 					<Descriptions.Item label="Высота растения">{product.plantHeight}</Descriptions.Item>
