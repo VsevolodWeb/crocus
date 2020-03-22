@@ -58,7 +58,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 			{title: 'Цена', key: 'price',
 				render: (product: ProductType) => {
 					return (this.state.editableProductId === product.key)
-						? <Input suffix="₽" defaultValue={product.price} type="number"/>
+						? <Input suffix="₽" defaultValue={product.price} type="number" style={{width: "85px"}}/>
 						: product.price
 				}
 			},

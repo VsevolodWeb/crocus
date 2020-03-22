@@ -1,8 +1,10 @@
 import React from "react";
-import {Button, Col, Descriptions, Input, Row} from "antd";
+import {Button, Col, Descriptions, Row} from "antd";
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
 import {ProductType} from "../../../../redux/products-reducer";
+import Select from "antd/lib/select";
+import OptionProps from "rc-select/lib/Option";
 
 type PropsType = {
 	product: ProductType
@@ -15,7 +17,21 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, editableProductId}) =>
 			<Col span={12}>
 				<Descriptions column={3}>
 					<Descriptions.Item label="Категория" span={3}>
-						{editableProductId === product.key ? <Input/> : product.category}
+						{editableProductId === product.key ?
+							<Select
+								showSearch
+								style={{ width: 200 }}
+								placeholder="Выберите категорию"
+								optionFilterProp="children"
+								filterOption={(input: string, option: OptionProps) =>
+									option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+								}
+							>
+								<Option value="jack">Jack</Option>
+								<Option value="lucy">Lucy</Option>
+								<Option value="tom">Tom</Option>
+							</Select>
+							: product.category}
 					</Descriptions.Item>
 					<Descriptions.Item label="Время цветения">{product.floweringTime}</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">{product.flowerDiameter}</Descriptions.Item>
