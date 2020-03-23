@@ -10,6 +10,7 @@ import {ProductType,
 	setLoadingActionCreator, SetLoadingActionCreatorType,
 	switchStockActionCreator, SwitchStockActionCreatorType
 } from "../../../redux/products-reducer";
+import {CategoryType} from "../../../redux/categories-reducer";
 
 
 type OwnType = {};
@@ -20,6 +21,7 @@ type MapDispatchToPropsType = {
 type MapStateToPropsType = {
 	loading: boolean
 	products: Array<ProductType>
+	categories: Array<CategoryType>
 }
 type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnType;
 type StateType = {
@@ -112,6 +114,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	render() {
 		return <Products columns={this.columns}
 		                 products={this.props.products}
+		                 categories={this.props.categories}
 		                 loading={this.props.loading}
 		                 editableProductId={this.state.editableProductId}/>
 	}
@@ -119,7 +122,8 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
 	loading: state.products.loading,
-	products: state.products.list
+	products: state.products.list,
+	categories: state.categories.list
 });
 
 export default connect<MapStateToPropsType, MapDispatchToPropsType, OwnType, AppStateType>(

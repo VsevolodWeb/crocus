@@ -6,7 +6,7 @@ const SWITCH_STOCK = "SWITCH_STOCK";
 export type ProductType = {
 	key: number
 	name: string
-	category: string
+	categoryId: number
 	description: string
 	price: number
 	tags: Array<string>
@@ -31,7 +31,7 @@ const initialState: InitialStateType = {
 		{
 			key: 1,
 			name: "Астильба Арендса «Color Flash»",
-			category: "Астильбы",
+			categoryId: 1,
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
 			price: 250,
 			tags: ["Хит продаж", "Акция", "Новинка"],
@@ -61,7 +61,7 @@ const initialState: InitialStateType = {
 		{
 			key: 2,
 			name: "Астильба Арендса «Color Flash»",
-			category: "Астильбы",
+			categoryId: 1,
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
 			price: 990,
 			tags: ["Хит продаж", "Акция", "Новинка"],

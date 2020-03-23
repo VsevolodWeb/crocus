@@ -4,14 +4,16 @@ import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
 import {ProductType} from "../../../../redux/products-reducer";
 import Select from "antd/lib/select";
-import OptionProps from "rc-select/lib/Option";
+import {CategoryType} from "../../../../redux/categories-reducer";
+const { Option } = Select;
 
 type PropsType = {
 	product: ProductType
+	categories: Array<CategoryType>
 	editableProductId: number | null
 }
 
-const ExpandedRowRender: React.FC<PropsType> = ({product, editableProductId}) => {
+const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editableProductId}) => {
 	return (
 		<Row>
 			<Col span={12}>
@@ -23,15 +25,13 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, editableProductId}) =>
 								style={{ width: 200 }}
 								placeholder="Выберите категорию"
 								optionFilterProp="children"
-								filterOption={(input: string, option: OptionProps) =>
+								filterOption={(input: string, option: any) =>
 									option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 								}
 							>
-								<Option value="jack">Jack</Option>
-								<Option value="lucy">Lucy</Option>
-								<Option value="tom">Tom</Option>
+								{categories.map(item => <Option value={item.title}>{item.title}</Option>)}
 							</Select>
-							: product.category}
+							: product.categoryId}
 					</Descriptions.Item>
 					<Descriptions.Item label="Время цветения">{product.floweringTime}</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">{product.flowerDiameter}</Descriptions.Item>
