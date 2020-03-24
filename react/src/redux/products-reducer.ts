@@ -61,7 +61,7 @@ const initialState: InitialStateType = {
 		{
 			key: 2,
 			name: "Астильба Арендса «Color Flash»",
-			categoryId: 1,
+			categoryId: 2,
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
 			price: 990,
 			tags: ["Хит продаж", "Акция", "Новинка"],

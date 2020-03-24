@@ -1,11 +1,16 @@
 import React from "react";
 import {Button, Col, Descriptions, Row} from "antd";
+import Select from "antd/lib/select";
+import { DatePicker } from 'antd';
+
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
 import {ProductType} from "../../../../redux/products-reducer";
-import Select from "antd/lib/select";
 import {CategoryType} from "../../../../redux/categories-reducer";
+
 const { Option } = Select;
+const { RangePicker } = DatePicker;
+
 
 type PropsType = {
 	product: ProductType
@@ -14,6 +19,8 @@ type PropsType = {
 }
 
 const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editableProductId}) => {
+	const getCategoryTitle = () => categories.find(category => category.key === product.categoryId)?.title;
+
 	return (
 		<Row>
 			<Col span={12}>
@@ -25,15 +32,19 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 								style={{ width: 200 }}
 								placeholder="Выберите категорию"
 								optionFilterProp="children"
-								filterOption={(input: string, option: any) =>
-									option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-								}
+								defaultValue={getCategoryTitle()}
 							>
 								{categories.map(item => <Option value={item.title}>{item.title}</Option>)}
 							</Select>
-							: product.categoryId}
+							: getCategoryTitle()
+						}
 					</Descriptions.Item>
-					<Descriptions.Item label="Время цветения">{product.floweringTime}</Descriptions.Item>
+					<Descriptions.Item label="Время цветения">
+						{editableProductId === product.key
+							? <RangePicker picker="month" />
+							: product.floweringTime
+						}
+					</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">{product.flowerDiameter}</Descriptions.Item>
 					<Descriptions.Item label="Высота растения">{product.plantHeight}</Descriptions.Item>
 					<Descriptions.Item label="Местоположение">{product.plantingLocation}</Descriptions.Item>
