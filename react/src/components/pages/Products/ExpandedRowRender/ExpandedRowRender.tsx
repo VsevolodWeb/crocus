@@ -41,8 +41,8 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					</Descriptions.Item>
 					<Descriptions.Item label="Время цветения">
 						{editableProductId === product.key
-							? <RangePicker picker="month" />
-							: product.floweringTime
+							? <RangePicker picker="month" format={"MMMM"} />
+							: product.floweringTime[0] + " — " + product.floweringTime[1]
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">{product.flowerDiameter}</Descriptions.Item>

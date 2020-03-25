@@ -10,7 +10,7 @@ export type ProductType = {
 	description: string
 	price: number
 	tags: Array<string>
-	floweringTime: string
+	floweringTime: Array<string>
 	flowerDiameter: string
 	plantHeight: string
 	plantingLocation: string
@@ -35,7 +35,7 @@ const initialState: InitialStateType = {
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
 			price: 250,
 			tags: ["Хит продаж", "Акция", "Новинка"],
-			floweringTime: "август-сентябрь",
+			floweringTime: ["август", "сентябрь"],
 			flowerDiameter: "до 1 см.",
 			plantHeight: "60-70 см.",
 			plantingLocation: "Полутень",
@@ -65,7 +65,7 @@ const initialState: InitialStateType = {
 			description: "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
 			price: 990,
 			tags: ["Хит продаж", "Акция", "Новинка"],
-			floweringTime: "август-сентябрь",
+			floweringTime: ["август", "сентябрь"],
 			flowerDiameter: "до 1 см.",
 			plantHeight: "60-70 см.",
 			plantingLocation: "Полутень",
