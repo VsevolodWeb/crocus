@@ -1,7 +1,8 @@
 import React from "react";
 import {Button, Col, Descriptions, Row} from "antd";
 import Select from "antd/lib/select";
-import { DatePicker } from 'antd';
+import { DatePicker, Input } from 'antd';
+import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
@@ -34,18 +35,28 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 								optionFilterProp="children"
 								defaultValue={getCategoryTitle()}
 							>
-								{categories.map(item => <Option value={item.title}>{item.title}</Option>)}
+								{categories.map(item => <Option key={item.key} value={item.title}>{item.title}</Option>)}
 							</Select>
 							: getCategoryTitle()
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Время цветения">
 						{editableProductId === product.key
-							? <RangePicker picker="month" format={"MMMM"} />
+							? <RangePicker picker="month" format={"MMMM"} dropdownClassName={s.rangePicker} />
 							: product.floweringTime[0] + " — " + product.floweringTime[1]
 						}
 					</Descriptions.Item>
-					<Descriptions.Item label="Диаметр цветка">{product.flowerDiameter}</Descriptions.Item>
+					<Descriptions.Item label="Диаметр цветка">
+						{editableProductId === product.key
+						? <Input addonBefore="до" addonAfter={
+								<Select defaultValue="см.">
+									<Option value="см.">см.</Option>
+									<Option value="м.">м.</Option>
+								</Select>
+							} defaultValue={product.flowerDiameter} />
+						: product.flowerDiameter
+						}
+					</Descriptions.Item>
 					<Descriptions.Item label="Высота растения">{product.plantHeight}</Descriptions.Item>
 					<Descriptions.Item label="Местоположение">{product.plantingLocation}</Descriptions.Item>
 					<Descriptions.Item label="Морозостойкость">{product.frostResistance}</Descriptions.Item>
