@@ -6,7 +6,7 @@ import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
-import {ProductType} from "../../../../redux/products-reducer";
+import {flowerDiameterUnit, ProductType} from "../../../../redux/products-reducer";
 import {CategoryType} from "../../../../redux/categories-reducer";
 
 const { Option } = Select;
@@ -22,6 +22,11 @@ type PropsType = {
 const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editableProductId}) => {
 	const getCategoryTitle = () => categories.find(category => category.key === product.categoryId)?.title;
 
+	const arrayOfFlowerDiameterUnits = []
+		Object.keys(flowerDiameterUnit).map((key) => {
+			arrayOfFlowerDiameterUnits.push(flowerDiameterUnit[key])
+			return 1;
+		});
 	return (
 		<Row>
 			<Col span={12}>
@@ -49,12 +54,14 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					<Descriptions.Item label="Диаметр цветка">
 						{editableProductId === product.key
 						? <Input addonBefore="до" addonAfter={
-								<Select defaultValue="см.">
+								<Select defaultValue={product.flowerDiameter.unit}>
+									{
+									}
 									<Option value="см.">см.</Option>
 									<Option value="м.">м.</Option>
 								</Select>
-							} defaultValue={product.flowerDiameter} />
-						: product.flowerDiameter
+							} defaultValue={product.flowerDiameter.size} />
+						: `до ${product.flowerDiameter.size}  ${product.flowerDiameter.unit}`
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Высота растения">{product.plantHeight}</Descriptions.Item>
