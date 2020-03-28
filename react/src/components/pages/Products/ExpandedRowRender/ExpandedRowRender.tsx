@@ -1,7 +1,6 @@
 import React from "react";
-import {Button, Col, Descriptions, Row} from "antd";
+import {Button, Col, DatePicker, Descriptions, Input, Row} from "antd";
 import Select from "antd/lib/select";
-import { DatePicker, Input } from 'antd';
 import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
@@ -22,11 +21,6 @@ type PropsType = {
 const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editableProductId}) => {
 	const getCategoryTitle = () => categories.find(category => category.key === product.categoryId)?.title;
 
-	const arrayOfFlowerDiameterUnits = []
-		Object.keys(flowerDiameterUnit).map((key) => {
-			arrayOfFlowerDiameterUnits.push(flowerDiameterUnit[key])
-			return 1;
-		});
 	return (
 		<Row>
 			<Col span={12}>
