@@ -3,14 +3,14 @@ import {UploadFile} from "antd/lib/upload/interface";
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
 
-export enum flowerDiameterUnit {
-	centimeter = "см.",
-	meter = "м."
-}
+export const flowerDiameterUnit = {
+	centimeter: "см.",
+	meter: "м."
+};
 
 export type FlowerDiameterType = {
 	size: number
-	unit: flowerDiameterUnit
+	unit: string
 }
 
 export type ProductType = {
@@ -22,7 +22,11 @@ export type ProductType = {
 	tags: Array<string>
 	floweringTime: Array<string>
 	flowerDiameter: FlowerDiameterType
-	plantHeight: string
+	plantHeight: {
+		from: string
+		to: string
+		unit: string
+	}
 	plantingLocation: string
 	frostResistance: string
 	isPublished: boolean

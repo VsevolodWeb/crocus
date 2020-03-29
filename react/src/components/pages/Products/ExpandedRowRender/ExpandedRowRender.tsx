@@ -47,18 +47,20 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">
 						{editableProductId === product.key
-						? <Input addonBefore="до" addonAfter={
+						? <Input type="number" addonBefore="до" addonAfter={
 								<Select defaultValue={product.flowerDiameter.unit}>
-									{
-									}
-									<Option value="см.">см.</Option>
-									<Option value="м.">м.</Option>
+									{Object.values(flowerDiameterUnit).map(unit => <Option value={unit}>{unit}</Option>)}
 								</Select>
 							} defaultValue={product.flowerDiameter.size} />
-						: `до ${product.flowerDiameter.size}  ${product.flowerDiameter.unit}`
+						: `до ${product.flowerDiameter.size} ${product.flowerDiameter.unit}`
 						}
 					</Descriptions.Item>
-					<Descriptions.Item label="Высота растения">{product.plantHeight}</Descriptions.Item>
+					<Descriptions.Item label="Высота растения">
+						{editableProductId === product.key
+							? <Input/>
+							: product.plantHeight
+						}
+					</Descriptions.Item>
 					<Descriptions.Item label="Местоположение">{product.plantingLocation}</Descriptions.Item>
 					<Descriptions.Item label="Морозостойкость">{product.frostResistance}</Descriptions.Item>
 					<Descriptions.Item label="Мин. кол-во">{product.minAmount}</Descriptions.Item>
