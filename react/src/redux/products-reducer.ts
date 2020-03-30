@@ -3,15 +3,13 @@ import {UploadFile} from "antd/lib/upload/interface";
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
 
-export const flowerDiameterUnit = {
+export const units = {
 	centimeter: "см.",
 	meter: "м."
 };
-
-export type FlowerDiameterType = {
-	size: number
-	unit: string
-}
+type FlowerUnitTypeCentimeter = typeof units.centimeter;
+type FlowerUnitTypeMeter = typeof units.meter;
+type FlowerUnitAllType = FlowerUnitTypeCentimeter | FlowerUnitTypeMeter;
 
 export type ProductType = {
 	key: number
@@ -21,11 +19,14 @@ export type ProductType = {
 	price: number
 	tags: Array<string>
 	floweringTime: Array<string>
-	flowerDiameter: FlowerDiameterType
+	flowerDiameter: {
+		size: number
+		unit: FlowerUnitAllType
+	}
 	plantHeight: {
-		from: string
-		to: string
-		unit: string
+		from: number
+		to: number
+		unit: FlowerUnitAllType
 	}
 	plantingLocation: string
 	frostResistance: string
@@ -52,9 +53,13 @@ const initialState: InitialStateType = {
 			floweringTime: ["август", "сентябрь"],
 			flowerDiameter: {
 				size: 1,
-				unit: flowerDiameterUnit.centimeter
+				unit: "см."
 			},
-			plantHeight: "60-70 см.",
+			plantHeight: {
+				from: 60,
+				to: 70,
+				unit: "см."
+			},
 			plantingLocation: "Полутень",
 			frostResistance: "-34°C — -29°C (Зона 4)",
 			isPublished: true,
@@ -85,9 +90,13 @@ const initialState: InitialStateType = {
 			floweringTime: ["август", "сентябрь"],
 			flowerDiameter: {
 				size: 1,
-				unit: flowerDiameterUnit.centimeter
+				unit: "см."
 			},
-			plantHeight: "60-70 см.",
+			plantHeight: {
+				from: 60,
+				to: 70,
+				unit: "см."
+			},
 			plantingLocation: "Полутень",
 			frostResistance: "-34°C — -29°C (Зона 4)",
 			isPublished: true,

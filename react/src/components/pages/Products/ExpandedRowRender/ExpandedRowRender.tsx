@@ -5,7 +5,7 @@ import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
-import {flowerDiameterUnit, ProductType} from "../../../../redux/products-reducer";
+import {units, ProductType} from "../../../../redux/products-reducer";
 import {CategoryType} from "../../../../redux/categories-reducer";
 
 const { Option } = Select;
@@ -49,7 +49,7 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 						{editableProductId === product.key
 						? <Input type="number" addonBefore="до" addonAfter={
 								<Select defaultValue={product.flowerDiameter.unit}>
-									{Object.values(flowerDiameterUnit).map(unit => <Option value={unit}>{unit}</Option>)}
+									{Object.values(units).map(unit => <Option value={unit}>{unit}</Option>)}
 								</Select>
 							} defaultValue={product.flowerDiameter.size} />
 						: `до ${product.flowerDiameter.size} ${product.flowerDiameter.unit}`
@@ -58,7 +58,7 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					<Descriptions.Item label="Высота растения">
 						{editableProductId === product.key
 							? <Input/>
-							: product.plantHeight
+							: `${product.plantHeight.from} — ${product.plantHeight.to} ${product.plantHeight.unit}`
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Местоположение">{product.plantingLocation}</Descriptions.Item>
