@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Col, DatePicker, Descriptions, Input, Row} from "antd";
 import Select from "antd/lib/select";
+import moment from "moment";
 import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
@@ -23,7 +24,7 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 
 	return (
 		<Row>
-			<Col span={12}>
+			<Col span={13}>
 				<Descriptions column={3}>
 					<Descriptions.Item label="Категория" span={3}>
 						{editableProductId === product.key ?
@@ -41,23 +42,31 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					</Descriptions.Item>
 					<Descriptions.Item label="Время цветения">
 						{editableProductId === product.key
-							? <RangePicker picker="month" format={"MMMM"} dropdownClassName={s.rangePicker} />
+							? <RangePicker picker="month" format={"MMMM"} dropdownClassName={s.rangePicker}
+							               defaultValue={[moment(product.floweringTime[0]), moment(product.floweringTime[1])]}/>
 							: product.floweringTime[0] + " — " + product.floweringTime[1]
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Диаметр цветка">
 						{editableProductId === product.key
-						? <Input type="number" addonBefore="до" addonAfter={
-								<Select defaultValue={product.flowerDiameter.unit}>
-									{Object.values(units).map(unit => <Option value={unit}>{unit}</Option>)}
-								</Select>
-							} defaultValue={product.flowerDiameter.size} />
+						? <Input.Group compact>
+							<Input type="number" addonBefore="до" min="1" style={{width: 120}} defaultValue={product.flowerDiameter.size} />
+							<Select defaultValue={product.flowerDiameter.unit}>
+								{Object.values(units).map((unit, index) => <Option key={index} value={unit}>{unit}</Option>)}
+							</Select>
+						  </Input.Group>
 						: `до ${product.flowerDiameter.size} ${product.flowerDiameter.unit}`
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Высота растения">
 						{editableProductId === product.key
-							? <Input/>
+							? <Input.Group compact>
+								<Input style={{width: 60}} type="number" min="1" placeholder="от"/>
+								<Input style={{width: 60}} type="number" min="1" placeholder="до"/>
+								<Select defaultValue={product.flowerDiameter.unit}>
+									{Object.values(units).map((unit, index) => <Option key={index} value={unit}>{unit}</Option>)}
+								</Select>
+							  </Input.Group>
 							: `${product.plantHeight.from} — ${product.plantHeight.to} ${product.plantHeight.unit}`
 						}
 					</Descriptions.Item>
@@ -68,7 +77,7 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 				</Descriptions>
 				<Button className={s.footerLink} type="link" danger>Удалить товар</Button>
 			</Col>
-			<Col offset={1} span={11}>
+			<Col offset={1} span={10}>
 				<PicturesWall photos={product.photos}/>
 			</Col>
 		</Row>

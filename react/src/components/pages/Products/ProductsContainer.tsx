@@ -32,7 +32,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	columns: ColumnsType<ProductType>;
 
 	state = {
-		editableProductId: null
+		editableProductId: 1
 	};
 
 	constructor(props: PropsType) {
