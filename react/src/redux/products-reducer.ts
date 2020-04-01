@@ -3,12 +3,15 @@ import {UploadFile} from "antd/lib/upload/interface";
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
 
+const UNIT_CENTIMETER = "см.";
+const UNIT_METER = "м.";
 export const units = {
-	centimeter: "см.",
-	meter: "м."
+	centimeter: UNIT_CENTIMETER,
+	meter: UNIT_METER
 };
-type FlowerUnitTypeCentimeter = typeof units.centimeter;
-type FlowerUnitTypeMeter = typeof units.meter;
+
+type FlowerUnitTypeCentimeter = typeof UNIT_CENTIMETER;
+type FlowerUnitTypeMeter = typeof UNIT_METER;
 type FlowerUnitAllType = FlowerUnitTypeCentimeter | FlowerUnitTypeMeter;
 
 export type ProductType = {
@@ -28,7 +31,7 @@ export type ProductType = {
 		to: number
 		unit: FlowerUnitAllType
 	}
-	plantingLocation: string
+	plantingLocation: Array<string>
 	frostResistance: string
 	isPublished: boolean
 	inStock: boolean
@@ -53,12 +56,12 @@ const initialState: InitialStateType = {
 			floweringTime: ["август", "сентябрь"],
 			flowerDiameter: {
 				size: 1,
-				unit: "см."
+				unit: "м."
 			},
 			plantHeight: {
 				from: 60,
 				to: 70,
-				unit: "см."
+				unit: "м."
 			},
 			plantingLocation: "Полутень",
 			frostResistance: "-34°C — -29°C (Зона 4)",

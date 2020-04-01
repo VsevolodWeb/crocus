@@ -43,7 +43,7 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					<Descriptions.Item label="Время цветения">
 						{editableProductId === product.key
 							? <RangePicker picker="month" format={"MMMM"} dropdownClassName={s.rangePicker}
-							               defaultValue={[moment(product.floweringTime[0]), moment(product.floweringTime[1])]}/>
+							               defaultValue={[moment(product.floweringTime[0], 'MMMM'), moment(product.floweringTime[1], 'MMMM')]}/>
 							: product.floweringTime[0] + " — " + product.floweringTime[1]
 						}
 					</Descriptions.Item>
@@ -61,8 +61,8 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 					<Descriptions.Item label="Высота растения">
 						{editableProductId === product.key
 							? <Input.Group compact>
-								<Input style={{width: 60}} type="number" min="1" placeholder="от"/>
-								<Input style={{width: 60}} type="number" min="1" placeholder="до"/>
+								<Input style={{width: 60}} type="number" min="1" placeholder="от" defaultValue={product.plantHeight.from}/>
+								<Input style={{width: 60}} type="number" min="1" placeholder="до" defaultValue={product.plantHeight.to}/>
 								<Select defaultValue={product.flowerDiameter.unit}>
 									{Object.values(units).map((unit, index) => <Option key={index} value={unit}>{unit}</Option>)}
 								</Select>
