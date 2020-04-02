@@ -10,6 +10,8 @@ type PropsType = {
 	columns: ColumnsType<ProductType>
 	products: Array<ProductType>
 	categories: Array<CategoryType>
+	units: Array<string>
+	plantingLocationList: Array<string>
 	loading: boolean
 	editableProductId: number | null
 }
@@ -21,7 +23,9 @@ const Products = (props: PropsType) => {
 			<Table
 				columns={props.columns}
 				expandedRowRender={
-					(product: ProductType) => <ExpandedRowRender product={product} categories={props.categories} editableProductId={props.editableProductId} />
+					(product: ProductType) => <ExpandedRowRender product={product} categories={props.categories}
+					                                             editableProductId={props.editableProductId} units={props.units}
+					                                             plantingLocationList={props.plantingLocationList}/>
 				}
 				dataSource={props.products}
 			/>

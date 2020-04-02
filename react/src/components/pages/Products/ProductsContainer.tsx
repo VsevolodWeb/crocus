@@ -22,6 +22,8 @@ type MapStateToPropsType = {
 	loading: boolean
 	products: Array<ProductType>
 	categories: Array<CategoryType>
+	units: Array<string>
+	plantingLocationList: Array<string>
 }
 type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnType;
 type StateType = {
@@ -116,13 +118,17 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 		                 products={this.props.products}
 		                 categories={this.props.categories}
 		                 loading={this.props.loading}
-		                 editableProductId={this.state.editableProductId}/>
+		                 editableProductId={this.state.editableProductId}
+		                 units={this.props.units}
+		                 plantingLocationList={this.props.plantingLocationList}/>
 	}
 }
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
 	loading: state.products.loading,
 	products: state.products.list,
+	units: state.products.units,
+	plantingLocationList: state.products.plantingLocationList,
 	categories: state.categories.list
 });
 

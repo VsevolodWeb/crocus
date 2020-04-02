@@ -3,16 +3,7 @@ import {UploadFile} from "antd/lib/upload/interface";
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
 
-const UNIT_CENTIMETER = "см.";
-const UNIT_METER = "м.";
-export const units = {
-	centimeter: UNIT_CENTIMETER,
-	meter: UNIT_METER
-};
-
-type FlowerUnitTypeCentimeter = typeof UNIT_CENTIMETER;
-type FlowerUnitTypeMeter = typeof UNIT_METER;
-type FlowerUnitAllType = FlowerUnitTypeCentimeter | FlowerUnitTypeMeter;
+export const plantingLocationList = []
 
 export type ProductType = {
 	key: number
@@ -24,14 +15,14 @@ export type ProductType = {
 	floweringTime: Array<string>
 	flowerDiameter: {
 		size: number
-		unit: FlowerUnitAllType
+		unit: string
 	}
 	plantHeight: {
 		from: number
 		to: number
-		unit: FlowerUnitAllType
+		unit: string
 	}
-	plantingLocation: Array<string>
+	plantingLocation: string
 	frostResistance: string
 	isPublished: boolean
 	inStock: boolean
@@ -40,7 +31,9 @@ export type ProductType = {
 }
 
 type InitialStateType = {
-	list: Array<ProductType>
+	list: Array<ProductType>,
+	units: Array<string>,
+	plantingLocationList: Array<string>,
 	loading: boolean
 }
 
@@ -56,7 +49,7 @@ const initialState: InitialStateType = {
 			floweringTime: ["август", "сентябрь"],
 			flowerDiameter: {
 				size: 1,
-				unit: "м."
+				unit: "см."
 			},
 			plantHeight: {
 				from: 60,
@@ -121,6 +114,8 @@ const initialState: InitialStateType = {
 			] as Array<UploadFile>
 		}
 	],
+	units: ["см.", "м."],
+	plantingLocationList: ["Солнце", "Солнце-полутень", "Тень-полутень", "Полутень"],
 	loading: false
 };
 

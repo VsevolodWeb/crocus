@@ -6,7 +6,7 @@ import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
-import {units, ProductType} from "../../../../redux/products-reducer";
+import {ProductType} from "../../../../redux/products-reducer";
 import {CategoryType} from "../../../../redux/categories-reducer";
 
 const { Option } = Select;
@@ -17,9 +17,13 @@ type PropsType = {
 	product: ProductType
 	categories: Array<CategoryType>
 	editableProductId: number | null
+	units: Array<string>
+	plantingLocationList: Array<string>
 }
 
-const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editableProductId}) => {
+const ExpandedRowRender: React.FC<PropsType> = (
+	{product, categories, editableProductId, units, plantingLocationList}
+	) => {
 	const getCategoryTitle = () => categories.find(category => category.key === product.categoryId)?.title;
 
 	return (
@@ -70,8 +74,34 @@ const ExpandedRowRender: React.FC<PropsType> = ({product, categories, editablePr
 							: `${product.plantHeight.from} — ${product.plantHeight.to} ${product.plantHeight.unit}`
 						}
 					</Descriptions.Item>
-					<Descriptions.Item label="Местоположение">{product.plantingLocation}</Descriptions.Item>
-					<Descriptions.Item label="Морозостойкость">{product.frostResistance}</Descriptions.Item>
+					<Descriptions.Item label="Местоположение">
+						{editableProductId === product.key ?
+							<Select
+								showSearch
+								style={{ width: 200 }}
+								placeholder="Выберите расположение"
+								optionFilterProp="children"
+								defaultValue={product.plantingLocation}
+							>
+								{plantingLocationList.map((item, index) => <Option key={index} value={item}>{item}</Option>)}
+							</Select>
+							: product.plantingLocation
+						}
+					</Descriptions.Item>
+					<Descriptions.Item label="Морозостойкость">
+						{editableProductId === product.key ?
+							<Select
+								showSearch
+								style={{ width: 200 }}
+								placeholder="Выберите морозостойкость"
+								optionFilterProp="children"
+								defaultValue={product.frostResistance}
+							>
+								{plantingLocationList.map((item, index) => <Option key={index} value={item}>{item}</Option>)}
+							</Select>
+							: product.frostResistance
+						}
+					</Descriptions.Item>
 					<Descriptions.Item label="Мин. кол-во">{product.minAmount}</Descriptions.Item>
 					<Descriptions.Item label="Описание" span={3}>{product.description}</Descriptions.Item>
 				</Descriptions>
