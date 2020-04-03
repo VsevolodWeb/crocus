@@ -3,8 +3,6 @@ import {UploadFile} from "antd/lib/upload/interface";
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
 
-export const plantingLocationList = []
-
 export type ProductType = {
 	key: number
 	name: string
@@ -30,10 +28,15 @@ export type ProductType = {
 	photos: Array<UploadFile>
 }
 
+export type ProductOptionsType = {
+	plantingLocationList: Array<string>,
+	frostResistance: Array<string>
+}
+
 type InitialStateType = {
 	list: Array<ProductType>,
 	units: Array<string>,
-	plantingLocationList: Array<string>,
+	productOptions: ProductOptionsType
 	loading: boolean
 }
 
@@ -115,7 +118,10 @@ const initialState: InitialStateType = {
 		}
 	],
 	units: ["см.", "м."],
-	plantingLocationList: ["Солнце", "Солнце-полутень", "Тень-полутень", "Полутень"],
+	productOptions: {
+		plantingLocationList: ["Солнце", "Солнце-полутень", "Тень-полутень", "Полутень"],
+		frostResistance: ["-34°C...-29°C (Зона 4)", "-29°C...-23°C (Зона 5)", "-23°C...-18°C (Зона 6)", "+4°C...+10°C (Зона 11)"]
+	},
 	loading: false
 };
 

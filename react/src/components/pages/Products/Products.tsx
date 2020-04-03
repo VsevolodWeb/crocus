@@ -3,15 +3,11 @@ import {Spin, Table, Typography} from "antd";
 import ExpandedRowRender from "./ExpandedRowRender/ExpandedRowRender";
 import {ColumnsType} from "antd/lib/table";
 import {ProductType} from "../../../redux/products-reducer";
-import {CategoryType} from "../../../redux/categories-reducer";
+import {MapStateToPropsType} from "./ProductsContainer";
 const {Title} = Typography;
 
-type PropsType = {
+type PropsType = MapStateToPropsType & {
 	columns: ColumnsType<ProductType>
-	products: Array<ProductType>
-	categories: Array<CategoryType>
-	units: Array<string>
-	plantingLocationList: Array<string>
 	loading: boolean
 	editableProductId: number | null
 }
@@ -25,7 +21,7 @@ const Products = (props: PropsType) => {
 				expandedRowRender={
 					(product: ProductType) => <ExpandedRowRender product={product} categories={props.categories}
 					                                             editableProductId={props.editableProductId} units={props.units}
-					                                             plantingLocationList={props.plantingLocationList}/>
+					                                             productOptions={props.productOptions}/>
 				}
 				dataSource={props.products}
 			/>

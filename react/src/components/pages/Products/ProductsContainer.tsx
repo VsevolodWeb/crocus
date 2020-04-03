@@ -6,7 +6,8 @@ import s from "./Products.module.css";
 import {ColumnsType} from "antd/lib/table";
 import Products from "./Products";
 import {AppStateType} from "../../../redux/store";
-import {ProductType,
+import {
+	ProductOptionsType, ProductType,
 	setLoadingActionCreator, SetLoadingActionCreatorType,
 	switchStockActionCreator, SwitchStockActionCreatorType
 } from "../../../redux/products-reducer";
@@ -18,12 +19,12 @@ type MapDispatchToPropsType = {
 	setLoading: (loading: boolean) => SetLoadingActionCreatorType
 	switchStock: (productId: number) => SwitchStockActionCreatorType
 };
-type MapStateToPropsType = {
+export type MapStateToPropsType = {
 	loading: boolean
 	products: Array<ProductType>
 	categories: Array<CategoryType>
 	units: Array<string>
-	plantingLocationList: Array<string>
+	productOptions: ProductOptionsType
 }
 type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnType;
 type StateType = {
@@ -115,12 +116,8 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 
 	render() {
 		return <Products columns={this.columns}
-		                 products={this.props.products}
-		                 categories={this.props.categories}
-		                 loading={this.props.loading}
 		                 editableProductId={this.state.editableProductId}
-		                 units={this.props.units}
-		                 plantingLocationList={this.props.plantingLocationList}/>
+		                 {...this.props}/>
 	}
 }
 
@@ -128,7 +125,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
 	loading: state.products.loading,
 	products: state.products.list,
 	units: state.products.units,
-	plantingLocationList: state.products.plantingLocationList,
+	productOptions: state.products.productOptions,
 	categories: state.categories.list
 });
 
