@@ -10,6 +10,7 @@ import {ProductOptionsType, ProductType} from "../../../../redux/products-reduce
 import {CategoryType} from "../../../../redux/categories-reducer";
 
 const { Option } = Select;
+const { TextArea } = Input;
 const { RangePicker } = DatePicker;
 
 
@@ -97,18 +98,26 @@ const ExpandedRowRender: React.FC<PropsType> = (props) => {
 								optionFilterProp="children"
 								defaultValue={props.product.frostResistance}
 							>
-								{props.productOptions.plantingLocationList.map((item, index) => <Option key={index} value={item}>{item}</Option>)}
+								{props.productOptions.frostResistance.map((item, index) => <Option key={index} value={item}>{item}</Option>)}
 							</Select>
 							: props.product.frostResistance
 						}
 					</Descriptions.Item>
-					<Descriptions.Item label="Мин. кол-во">{props.product.minAmount}</Descriptions.Item>
-					<Descriptions.Item label="Описание" span={3}>{props.product.description}</Descriptions.Item>
+					<Descriptions.Item label="Мин. кол-во, шт.">
+						{props.editableProductId === props.product.key
+							? <Input defaultValue={props.product.minAmount} type="number" style={{width: "60px"}}/>
+							: props.product.minAmount}
+					</Descriptions.Item>
+					<Descriptions.Item label="Описание" span={3} className={s.descriptionsItemTextarea}>
+						{props.editableProductId === props.product.key
+							? <TextArea rows={4} defaultValue={props.product.description}/>
+							: props.product.description}
+					</Descriptions.Item>
 				</Descriptions>
 				<Button className={s.footerLink} type="link" danger>Удалить товар</Button>
 			</Col>
 			<Col offset={1} span={10}>
-				<PicturesWall photos={props.product.photos}/>
+				<PicturesWall photos={props.product.photos} productId={props.product.key} editableProductId={props.editableProductId} />
 			</Col>
 		</Row>
 	)

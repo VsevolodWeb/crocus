@@ -5,3 +5,7 @@
 .footerLink {
 	margin-top: 30px;
 }
+
+.descriptionsItemTextarea > span {
+	display: block;
+}

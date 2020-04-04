@@ -20,6 +20,8 @@ function getBase64(file: any) {
 
 type PropsType = {
 	photos: Array<UploadFile>
+	productId: number
+	editableProductId: number | null
 }
 
 type StateType = {
@@ -62,10 +64,12 @@ class PicturesWall extends React.Component<PropsType, StateType> {
 					onPreview={this.handlePreview}
 					onChange={this.handleChange}
 				>
-					<div>
-						<PlusOutlined />
-						<div className="ant-upload-text">Загрузить</div>
-					</div>
+					{this.props.editableProductId === this.props.productId
+					? <div>
+					    <PlusOutlined />
+					    <div className="ant-upload-text">Загрузить</div>
+					  </div>
+					: null}
 				</Upload>
 				<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
 					<img alt="example" style={{ width: '100%' }} src={previewImage} />
