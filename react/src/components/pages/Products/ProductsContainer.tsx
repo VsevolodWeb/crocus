@@ -35,23 +35,34 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 	columns: ColumnsType<ProductType>;
 
 	state = {
-		editableProductId: 1
+		editableProductId: null
 	};
 
 	constructor(props: PropsType) {
 		super(props);
 
-		this.columns = [{
-			title: "Наличие", key: 'quickActions',
-			render: (product: ProductType) => {
-				return (this.state.editableProductId === product.key) ? null
-					: <Switch
-						checkedChildren={<CheckOutlined/>}
-						unCheckedChildren={<CloseOutlined/>}
-						onChange={this.switchStock(product.key)}
-						checked={product.inStock}
-					/>
-			}
+		this.columns = [
+			{title: "Отображение", key: 'quickActions',
+				render: (product: ProductType) => {
+					return (this.state.editableProductId === product.key) ? null
+						: <Switch
+							checkedChildren={<CheckOutlined/>}
+							unCheckedChildren={<CloseOutlined/>}
+							onChange={this.switchStock(product.key)}
+							checked={product.isPublished}
+						/>
+				}
+			},
+			{title: "Наличие", key: 'quickActions',
+				render: (product: ProductType) => {
+					return (this.state.editableProductId === product.key) ? null
+						: <Switch
+							checkedChildren={<CheckOutlined/>}
+							unCheckedChildren={<CloseOutlined/>}
+							onChange={this.switchStock(product.key)}
+							checked={product.inStock}
+						/>
+				}
 			},
 			{title: 'Наименование товара', key: 'name',
 				render: (product: ProductType) => {

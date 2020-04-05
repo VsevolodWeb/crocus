@@ -72,7 +72,7 @@ const ExpandedRowRender: React.FC<PropsType> = (props) => {
 									{Object.values(props.units).map((unit: string, index) => <Option key={index} value={unit}>{unit}</Option>)}
 								</Select>
 							  </Input.Group>
-							: `${props.product.plantHeight.from} — ${props.product.plantHeight.to} ${props.product.plantHeight.unit}`
+							: `${props.product.plantHeight.from}-${props.product.plantHeight.to} ${props.product.plantHeight.unit}`
 						}
 					</Descriptions.Item>
 					<Descriptions.Item label="Местоположение">
@@ -105,7 +105,7 @@ const ExpandedRowRender: React.FC<PropsType> = (props) => {
 					</Descriptions.Item>
 					<Descriptions.Item label="Мин. кол-во, шт.">
 						{props.editableProductId === props.product.key
-							? <Input defaultValue={props.product.minAmount} type="number" style={{width: "60px"}}/>
+							? <Input defaultValue={props.product.minAmount} min="1" type="number" style={{width: "60px"}}/>
 							: props.product.minAmount}
 					</Descriptions.Item>
 					<Descriptions.Item label="Описание" span={3} className={s.descriptionsItemTextarea}>

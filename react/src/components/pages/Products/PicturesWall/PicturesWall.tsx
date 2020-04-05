@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Upload, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import {UploadChangeParam, UploadFile} from "antd/lib/upload/interface";
@@ -30,53 +30,48 @@ type StateType = {
 	fileList: Array<UploadFile>
 }
 
-class PicturesWall extends React.Component<PropsType, StateType> {
-	state = {
-		previewVisible: false,
-		previewImage: '',
-		fileList: this.props.photos
-	};
+const PicturesWall: React.FC<PropsType> = props => {
+	const [previewVisible, setPreviewVisible] = useState(false);
+	const [previewImage, setPreviewImage] = useState<string | undefined>('');
+	const [fileList, setFileList] = useState(props.photos);
 
-	handleCancel = () => this.setState({ previewVisible: false });
+	const isEditMode = props.editableProductId === props.productId;
 
-	handlePreview = async (file: UploadFile) => {
+	const handleCancel = () => setPreviewVisible(false);
+
+	const handlePreview = async (file: UploadFile) => {
 		if (!file.url && !file.preview) {
 			file.preview = await getBase64(file.originFileObj);
 		}
 
-		this.setState({
-			previewImage: file.url || file.preview,
-			previewVisible: true,
-		});
+		setPreviewImage(file.url || file.preview);
+		setPreviewVisible(true);
 	};
 
-	handleChange = ({ fileList}: UploadChangeParam) => this.setState({ fileList });
+	const handleChange = ({ fileList}: UploadChangeParam) => setFileList(fileList);
 
-	render() {
-		const { previewVisible, previewImage, fileList } = this.state;
-
-		return (
-			<div>
-				<Upload
-					action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-					listType="picture-card"
-					fileList={fileList}
-					onPreview={this.handlePreview}
-					onChange={this.handleChange}
-				>
-					{this.props.editableProductId === this.props.productId
+	return (
+		<div>
+			<Upload
+				action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+				listType="picture-card"
+				fileList={fileList}
+				onPreview={handlePreview}
+				onChange={handleChange}
+				showUploadList={{showRemoveIcon: isEditMode}}
+			>
+				{isEditMode
 					? <div>
-					    <PlusOutlined />
-					    <div className="ant-upload-text">Загрузить</div>
-					  </div>
+						<PlusOutlined/>
+						<div className="ant-upload-text">Загрузить</div>
+					</div>
 					: null}
-				</Upload>
-				<Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
-					<img alt="example" style={{ width: '100%' }} src={previewImage} />
-				</Modal>
-			</div>
-		);
-	}
-}
+			</Upload>
+			<Modal visible={previewVisible} footer={null} onCancel={handleCancel}>
+				<img alt="example" style={{ width: '100%' }} src={previewImage} />
+			</Modal>
+		</div>
+	)
+};
 
 export default PicturesWall;

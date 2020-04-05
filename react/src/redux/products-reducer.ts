@@ -2,6 +2,7 @@ import {UploadFile} from "antd/lib/upload/interface";
 
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
+const SWITCH_PUBLISH = "SWITCH_STOCK";
 
 export type ProductType = {
 	key: number
@@ -60,8 +61,8 @@ const initialState: InitialStateType = {
 				unit: "м."
 			},
 			plantingLocation: "Полутень",
-			frostResistance: "-34°C — -29°C (Зона 4)",
-			isPublished: true,
+			frostResistance: "-34°C...-29°C (Зона 4)",
+			isPublished: false,
 			inStock: true,
 			minAmount: 1,
 			photos: [
@@ -97,7 +98,7 @@ const initialState: InitialStateType = {
 				unit: "см."
 			},
 			plantingLocation: "Полутень",
-			frostResistance: "-34°C — -29°C (Зона 4)",
+			frostResistance: "-34°C...-29°C (Зона 4)",
 			isPublished: true,
 			inStock: false,
 			minAmount: 1,
