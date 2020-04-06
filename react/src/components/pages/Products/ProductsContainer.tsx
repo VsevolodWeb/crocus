@@ -8,7 +8,7 @@ import Products from "./Products";
 import {AppStateType} from "../../../redux/store";
 import {
 	ProductOptionsType, ProductType,
-	setLoadingActionCreator, SetLoadingActionCreatorType,
+	setLoadingActionCreator, SetLoadingActionCreatorType, switchPublishActionCreator, SwitchPublishActionCreatorType,
 	switchStockActionCreator, SwitchStockActionCreatorType
 } from "../../../redux/products-reducer";
 import {CategoryType} from "../../../redux/categories-reducer";
@@ -18,6 +18,7 @@ type OwnType = {};
 type MapDispatchToPropsType = {
 	setLoading: (loading: boolean) => SetLoadingActionCreatorType
 	switchStock: (productId: number) => SwitchStockActionCreatorType
+	switchPublish: (productId: number) => SwitchPublishActionCreatorType
 };
 export type MapStateToPropsType = {
 	loading: boolean
@@ -48,7 +49,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 						: <Switch
 							checkedChildren={<CheckOutlined/>}
 							unCheckedChildren={<CloseOutlined/>}
-							onChange={this.switchStock(product.key)}
+							onChange={this.switchPublish(product.key)}
 							checked={product.isPublished}
 						/>
 				}
@@ -74,7 +75,7 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 			{title: 'Цена', key: 'price',
 				render: (product: ProductType) => {
 					return (this.state.editableProductId === product.key)
-						? <Input suffix="₽" defaultValue={product.price} type="number" style={{width: "85px"}}/>
+						? <Input suffix="₽" defaultValue={product.price} type="number" min="1" style={{width: "85px"}}/>
 						: product.price
 				}
 			},
@@ -125,6 +126,17 @@ class ProductsContainer extends React.Component<PropsType, StateType> {
 		}
 	};
 
+	switchPublish = (productId: number) => {
+		return () => {
+			this.props.setLoading(true);
+			this.props.switchPublish(productId);
+
+			setTimeout(() => {
+				this.props.setLoading(false);
+			}, 2000);
+		}
+	};
+
 	render() {
 		return <Products columns={this.columns}
 		                 editableProductId={this.state.editableProductId}
@@ -142,5 +154,9 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
 
 export default connect<MapStateToPropsType, MapDispatchToPropsType, OwnType, AppStateType>(
 	mapStateToProps,
-	{setLoading: setLoadingActionCreator, switchStock: switchStockActionCreator}
+	{
+		setLoading: setLoadingActionCreator,
+		switchStock: switchStockActionCreator,
+		switchPublish: switchPublishActionCreator
+	}
 )(ProductsContainer);

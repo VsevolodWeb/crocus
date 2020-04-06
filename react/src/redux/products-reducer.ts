@@ -2,7 +2,7 @@ import {UploadFile} from "antd/lib/upload/interface";
 
 const SET_LOADING = "SET_LOADING";
 const SWITCH_STOCK = "SWITCH_STOCK";
-const SWITCH_PUBLISH = "SWITCH_STOCK";
+const SWITCH_PUBLISH = "SWITCH_PUBLISH";
 
 export type ProductType = {
 	key: number
@@ -28,15 +28,14 @@ export type ProductType = {
 	minAmount: number
 	photos: Array<UploadFile>
 }
-
 export type ProductOptionsType = {
-	plantingLocationList: Array<string>,
+	plantingLocationList: Array<string>
 	frostResistance: Array<string>
 }
 
 type InitialStateType = {
-	list: Array<ProductType>,
-	units: Array<string>,
+	list: Array<ProductType>
+	units: Array<string>
 	productOptions: ProductOptionsType
 	loading: boolean
 }
@@ -126,7 +125,7 @@ const initialState: InitialStateType = {
 	loading: false
 };
 
-type ActionsTypes = SetLoadingActionCreatorType | SwitchStockActionCreatorType;
+type ActionsTypes = SetLoadingActionCreatorType | SwitchStockActionCreatorType | SwitchPublishActionCreatorType;
 
 const productsReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 	switch (action.type) {
@@ -136,6 +135,11 @@ const productsReducer = (state = initialState, action: ActionsTypes): InitialSta
 		case SWITCH_STOCK: {
 			return {...state, list: state.list.map((product: ProductType) => {
 					return product.key === action.productId ? {...product, inStock: !product.inStock} : product;
+				})}
+		}
+		case SWITCH_PUBLISH: {
+			return {...state, list: state.list.map((product: ProductType) => {
+					return product.key === action.productId ? {...product, isPublished: !product.isPublished} : product;
 				})}
 		}
 		default: {
@@ -149,10 +153,19 @@ export type SetLoadingActionCreatorType = {
 	loading: boolean
 }
 export const setLoadingActionCreator = (loading: boolean): SetLoadingActionCreatorType => ({type: SET_LOADING, loading});
+
 export type SwitchStockActionCreatorType = {
 	type: typeof SWITCH_STOCK
 	productId: number
 }
 export const switchStockActionCreator = (productId: number): SwitchStockActionCreatorType => ({type: SWITCH_STOCK, productId});
+
+export type SwitchPublishActionCreatorType = {
+	type: typeof SWITCH_PUBLISH
+	productId: number
+}
+export const switchPublishActionCreator = (productId: number): SwitchPublishActionCreatorType => {
+	return {type: SWITCH_PUBLISH, productId}
+};
 
 export default productsReducer;
