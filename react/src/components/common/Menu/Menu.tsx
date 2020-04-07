@@ -10,11 +10,10 @@ const MenuComponent: React.FC<PropsType> = () => {
         <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['1']}
             className={s.mainMenu}
         >
             <Menu.Item key="1">
-                <Link to="/">
+                <Link to="/products">
                     Товары
                 </Link>
             </Menu.Item>

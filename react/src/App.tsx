@@ -9,6 +9,7 @@ import Categories from "./components/pages/Categories/Categories";
 import MenuComponent from "./components/common/Menu/Menu";
 import store from "./redux/store";
 import ProductsContainer from "./components/pages/Products/ProductsContainer";
+import AuthContainer from './components/pages/Auth/AuthContainer';
 
 
 const {Header, Content, Footer} = Layout;
@@ -38,6 +39,9 @@ const App = () => {
 							</Breadcrumb>
 							<div className={s.content}>
 								<Route exact path="/">
+									<AuthContainer/>
+								</Route>
+								<Route path="/products">
 									<ProductsContainer/>
 								</Route>
 								<Route path="/categories">
@@ -45,7 +49,7 @@ const App = () => {
 								</Route>
 							</div>
 						</Content>
-						<Footer className={s.footer}>Crocus ©2020 Created by Vsevolod Ivanov</Footer>
+						<Footer className={s.footer}>©2020 Crocus Velikie Luki</Footer>
 					</Layout>
 				</ConfigProvider>
 			</Provider>
