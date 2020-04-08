@@ -49,7 +49,7 @@ const App = () => {
 								</Route>
 							</div>
 						</Content>
-						<Footer className={s.footer}>©2020 Crocus Velikie Luki</Footer>
+						<Footer className={s.footer}>©{(new Date).getFullYear()} Крокус Великие Луки</Footer>
 					</Layout>
 				</ConfigProvider>
 			</Provider>

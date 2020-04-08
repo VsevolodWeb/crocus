@@ -1,50 +1,62 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
-import s from './Auth.module.css';
+import {Form, Input, Button, Checkbox, Col, Row, Typography} from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-type PropsType = {}
+const { Title } = Typography;
 
-const Auth: React.FC<PropsType> = props => {
-	const tailLayout = {
-		wrapperCol: { offset: 8, span: 16 },
+export const Auth = () => {
+	const onFinish = (values: any) => {
+		console.log('Received values of form: ', values);
 	};
 
-	return (
-		<div className={s.container}>
-			<Form
-				labelCol={{ span: 8 }}
-				wrapperCol={{ span: 16 }}
-				name="basic"
-				initialValues={{ remember: true }}
-			>
-				<Form.Item
-					label="Логин"
-					name="username"
-					rules={[{ required: true, message: 'Пожалуйста, введите ваш логин.' }]}
+	return <>
+		<Title>Войти личный кабинет</Title>
+		<Row>
+			<Col span={6}>
+				<Form
+					name="normal_login"
+					className="login-form"
+					initialValues={{ remember: true }}
+					onFinish={onFinish}
 				>
-					<Input />
-				</Form.Item>
+					<Form.Item
+						name="username"
+						rules={[{ required: true, message: 'Please input your Username!' }]}
+					>
+						<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+					</Form.Item>
+					<Form.Item
+						name="password"
+						rules={[{ required: true, message: 'Please input your Password!' }]}
+					>
+						<Input
+							prefix={<LockOutlined className="site-form-item-icon" />}
+							type="password"
+							placeholder="Password"
+						/>
+					</Form.Item>
+					<Form.Item>
+						<Form.Item name="remember" valuePropName="checked" noStyle>
+							<Checkbox>Remember me</Checkbox>
+						</Form.Item>
 
-				<Form.Item
-					label="Пароль"
-					name="password"
-					rules={[{ required: true, message: 'Пожалуйста, введите ваш пароль.' }]}
-				>
-					<Input.Password />
-				</Form.Item>
+						<a className="login-form-forgot" href="">
+							Forgot password
+						</a>
+					</Form.Item>
 
-				<Form.Item {...tailLayout} name="remember">
-					<Checkbox>Запомнить меня</Checkbox>
-				</Form.Item>
-
-				<Form.Item {...tailLayout}>
-					<Button type="primary" htmlType="submit">
-						Submit
-					</Button>
-				</Form.Item>
-			</Form>
-		</div>
-	);
+					<Form.Item>
+						<Button type="primary" htmlType="submit" className="login-form-button">
+							Log in
+						</Button>
+						<div style={{marginTop: 20}}>
+							Or <a href="#">register now!</a>
+						</div>
+					</Form.Item>
+				</Form>
+			</Col>
+		</Row>
+	</>
 };
 
 export default Auth;
