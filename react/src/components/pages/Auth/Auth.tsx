@@ -1,10 +1,19 @@
 import React from 'react';
 import {Form, Input, Button, Checkbox, Col, Row, Typography} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {useHttp} from "../../../hooks/http.hook";
 
 const { Title } = Typography;
 
 export const Auth = () => {
+	const {loading, error, request} = useHttp();
+
+	const registerHandler = async () => {
+		try {
+			const data = await request('/api/auth/register');
+		} catch(e) {}
+	}
+
 	const onFinish = (values: any) => {
 		console.log('Received values of form: ', values);
 	};
