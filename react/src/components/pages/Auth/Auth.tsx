@@ -21,13 +21,13 @@ export const Auth = () => {
 				>
 					<Form.Item
 						name="username"
-						rules={[{ required: true, message: 'Please input your Username!' }]}
+						rules={[{ required: true, message: 'Введите ваш логин' }]}
 					>
-						<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+						<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Логин" />
 					</Form.Item>
 					<Form.Item
 						name="password"
-						rules={[{ required: true, message: 'Please input your Password!' }]}
+						rules={[{ required: true, message: 'Введите ваш пароль' }]}
 					>
 						<Input
 							prefix={<LockOutlined className="site-form-item-icon" />}
@@ -37,10 +37,10 @@ export const Auth = () => {
 					</Form.Item>
 					<Form.Item>
 						<Form.Item name="remember" valuePropName="checked" noStyle>
-							<Checkbox>Remember me</Checkbox>
+							<Checkbox>Запомнить меня</Checkbox>
 						</Form.Item>
 
-						<a className="login-form-forgot" href="">
+						<a className="login-form-forgot" href="!#">
 							Forgot password
 						</a>
 					</Form.Item>
@@ -50,7 +50,7 @@ export const Auth = () => {
 							Log in
 						</Button>
 						<div style={{marginTop: 20}}>
-							Or <a href="#">register now!</a>
+							Or <a href="!#">register now!</a>
 						</div>
 					</Form.Item>
 				</Form>
