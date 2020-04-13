@@ -20,31 +20,26 @@ export const Auth = () => {
 		<Spin spinning={loading}>
 			<Row>
 			<Col span={6}>
-				<Form
-					name="normal_login"
-					className="login-form"
-					initialValues={{ remember: true }}
-					onFinish={registerHandler}
-				>
+				<Form onFinish={registerHandler}>
 					<Form.Item
-						name="username"
-						rules={[{ required: true, message: 'Введите ваш логин' }]}
+						name="email"
+						rules={[{ required: true, message: 'Введите ваш e-mail' }]}
 					>
-						<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Логин" />
+						<Input prefix={<UserOutlined />} placeholder="E-mail"/>
 					</Form.Item>
 					<Form.Item
 						name="password"
 						rules={[{ required: true, message: 'Введите ваш пароль' }]}
 					>
 						<Input
-							prefix={<LockOutlined className="site-form-item-icon" />}
+							prefix={<LockOutlined/>}
 							type="password"
 							placeholder="Password"
 						/>
 					</Form.Item>
 
 					<Form.Item>
-						<Button type="primary" htmlType="submit" className="login-form-button">
+						<Button type="primary" htmlType="submit">
 							Register
 						</Button>
 					</Form.Item>
