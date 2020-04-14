@@ -6,7 +6,7 @@ import {useHttp} from "../../../hooks/http.hook";
 const { Title } = Typography;
 
 export const Auth = () => {
-	const {loading, error, request} = useHttp();
+	const {loading, errors, request} = useHttp();
 
 	const registerHandler = async (values: any) => {
 		try {
@@ -14,6 +14,10 @@ export const Auth = () => {
 			console.log(data);
 		} catch(e) {}
 	};
+
+	if(errors) {
+		//errors.find(x => x.id === '45').foo
+	}
 
 	return <>
 		<Title>Войти личный кабинет</Title>
