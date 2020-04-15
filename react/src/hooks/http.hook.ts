@@ -14,9 +14,9 @@ export const useHttp = () => {
 
 		try {
 			const response = await fetch(url, {method, body, headers});
-			const data = response.json().then(function(data) {
-				setErrors(data.errors);
-			});
+			const data = await response.json();
+
+			setErrors(data.errors);
 
 			if (!response.ok) {
 				throw new Error(data.message || 'Что-то пошло не так');
@@ -26,7 +26,6 @@ export const useHttp = () => {
 			return data;
 		} catch (e) {
 			setLoading(false);
-			setErrors(e.message);
 			throw e;
 		}
 	}, []);

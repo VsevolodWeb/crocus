@@ -15,8 +15,8 @@ export const Auth = () => {
 		} catch(e) {}
 	};
 
-	if(errors) {
-		//errors.find(x => x.id === '45').foo
+	if (errors) {
+		console.log(errors)
 	}
 
 	return <>
