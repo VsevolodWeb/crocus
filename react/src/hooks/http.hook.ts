@@ -2,7 +2,7 @@ import {useCallback, useState} from "react";
 
 export const useHttp = () => {
 	const [loading, setLoading] = useState(false);
-	const [errors, setErrors] = useState(null);
+	const [errors, setErrors] = useState<Array<string> | null>(null);
 
 	const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
 		setLoading(true);
@@ -23,9 +23,11 @@ export const useHttp = () => {
 			}
 			setLoading(false);
 
+
 			return data;
 		} catch (e) {
 			setLoading(false);
+			setErrors(e.message);
 			throw e;
 		}
 	}, []);

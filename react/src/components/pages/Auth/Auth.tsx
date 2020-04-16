@@ -7,6 +7,7 @@ const { Title } = Typography;
 
 export const Auth = () => {
 	const {loading, errors, request} = useHttp();
+	let errorsList;
 
 	const registerHandler = async (values: any) => {
 		try {
@@ -15,9 +16,13 @@ export const Auth = () => {
 		} catch(e) {}
 	};
 
-	if (errors) {
-		console.log(errors)
+	if(errors) {
+		errorsList = <ul>
+			{errors.map(item => <li>{item}</li>)}
+		</ul>
 	}
+
+	console.log(errors)
 
 	return <>
 		<Title>Войти личный кабинет</Title>
@@ -27,18 +32,18 @@ export const Auth = () => {
 				<Form onFinish={registerHandler}>
 					<Form.Item
 						name="email"
-						rules={[{ required: true, message: 'Введите ваш e-mail' }]}
+						rules={[{ required: true, message: 'Введите ваш e-mail' }, { type: 'email', message: 'Введите правильный e-mail' }]}
 					>
 						<Input prefix={<UserOutlined />} placeholder="E-mail"/>
 					</Form.Item>
 					<Form.Item
 						name="password"
-						rules={[{ required: true, message: 'Введите ваш пароль' }]}
+						rules={[{ required: true, message: 'Введите ваш пароль' }, { min: 6, message: 'Минимальная длина пароля 6 символов' }]}
 					>
 						<Input
 							prefix={<LockOutlined/>}
 							type="password"
-							placeholder="Password"
+							placeholder="Пароль"
 						/>
 					</Form.Item>
 
@@ -47,6 +52,9 @@ export const Auth = () => {
 							Register
 						</Button>
 					</Form.Item>
+					<div>
+						{errorsList}
+					</div>
 				</Form>
 			</Col>
 		</Row>
