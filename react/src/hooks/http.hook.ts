@@ -1,8 +1,14 @@
 import {useCallback, useState} from "react";
+import {ValidationError} from "express-validator";
+
+type ErrorsType = {
+	errors: Array<ValidationError>,
+	message: string
+}
 
 export const useHttp = () => {
 	const [loading, setLoading] = useState(false);
-	const [errors, setErrors] = useState<Array<string> | null>(null);
+	const [errors, setErrors] = useState<ErrorsType | null>(null);
 
 	const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
 		setLoading(true);
@@ -16,19 +22,15 @@ export const useHttp = () => {
 			const response = await fetch(url, {method, body, headers});
 			const data = await response.json();
 
-			setErrors(data.errors);
-
 			if (!response.ok) {
-				throw new Error(data.message || 'Что-то пошло не так');
+				setErrors(data);
+				throw new Error();
 			}
 			setLoading(false);
-
 
 			return data;
 		} catch (e) {
 			setLoading(false);
-			setErrors(e.message);
-			throw e;
 		}
 	}, []);
 

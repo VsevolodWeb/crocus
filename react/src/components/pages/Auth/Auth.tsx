@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Form, Input, Button, Checkbox, Col, Row, Typography, Spin} from 'antd';
+import {Form, Input, Button, Checkbox, Col, Row, Typography, Spin, Alert} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {useHttp} from "../../../hooks/http.hook";
 
@@ -17,15 +17,11 @@ export const Auth = () => {
 	};
 
 	if(errors) {
-		errorsList = <ul>
-			{errors.map(item => <li>{item}</li>)}
-		</ul>
+		errorsList = errors.errors.map((item, index) => <Alert key={index} message={item.msg} type="error"/>);
 	}
 
-	console.log(errors)
-
 	return <>
-		<Title>Войти личный кабинет</Title>
+		<Title>Регистрация</Title>
 		<Spin spinning={loading}>
 			<Row>
 			<Col span={6}>
@@ -38,7 +34,7 @@ export const Auth = () => {
 					</Form.Item>
 					<Form.Item
 						name="password"
-						rules={[{ required: true, message: 'Введите ваш пароль' }, { min: 6, message: 'Минимальная длина пароля 6 символов' }]}
+						rules={[{ required: true, message: 'Введите ваш пароль' }]}
 					>
 						<Input
 							prefix={<LockOutlined/>}
@@ -52,9 +48,7 @@ export const Auth = () => {
 							Register
 						</Button>
 					</Form.Item>
-					<div>
-						{errorsList}
-					</div>
+					{errorsList}
 				</Form>
 			</Col>
 		</Row>
