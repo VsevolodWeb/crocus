@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import {Form, Input, Button, Checkbox, Col, Row, Typography, Spin, Alert} from 'antd';
+import {Form, Input, Button, Checkbox, Col, Row, Typography, Spin, Alert, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {useHttp} from "../../../hooks/http.hook";
 
 const { Title } = Typography;
 
 export const Auth = () => {
-	const {loading, errors, request} = useHttp();
-	let errorsList;
+	const {loading, request} = useHttp();
 
 	const registerHandler = async (values: any) => {
 		try {
@@ -15,10 +14,6 @@ export const Auth = () => {
 			console.log(data);
 		} catch(e) {}
 	};
-
-	if(errors) {
-		errorsList = errors.errors.map((item, index) => <Alert key={index} message={item.msg} type="error"/>);
-	}
 
 	return <>
 		<Title>Регистрация</Title>
@@ -44,11 +39,10 @@ export const Auth = () => {
 					</Form.Item>
 
 					<Form.Item>
-						<Button type="primary" htmlType="submit">
+						<Button type="primary" htmlType="submit" onClick={() => message.error('123')}>
 							Register
 						</Button>
 					</Form.Item>
-					{errorsList}
 				</Form>
 			</Col>
 		</Row>
