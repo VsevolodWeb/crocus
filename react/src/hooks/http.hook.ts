@@ -1,15 +1,14 @@
 import {useCallback, useState} from "react";
 import {ValidationError} from "express-validator";
-import {message} from "antd";
 
-type ErrorsType = {
-	errors: Array<ValidationError>,
+type ErrorType = {
+	errors: Array<ValidationError>
 	message: string
 }
 
 export const useHttp = () => {
 	const [loading, setLoading] = useState(false);
-	const [errors, setErrors] = useState<Array<ErrorsType> | null>(null);
+	const [errors, setErrors] = useState<ErrorType | null>(null);
 
 	const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
 		setLoading(true);
@@ -25,13 +24,6 @@ export const useHttp = () => {
 
 			if (!response.ok) {
 				setErrors(data);
-
-				console.log(errors)
-
-				if (errors) {
-					//console.log(errors)
-				}
-
 				throw new Error();
 			}
 			setLoading(false);

@@ -6,14 +6,17 @@ import {useHttp} from "../../../hooks/http.hook";
 const { Title } = Typography;
 
 export const Auth = () => {
-	const {loading, request} = useHttp();
+	const {loading, errors, request} = useHttp();
 
 	const registerHandler = async (values: any) => {
 		try {
 			const data = await request('/api/auth/register', 'POST', {...values});
-			console.log(data);
+			console.log(errors);
 		} catch(e) {}
+
 	};
+
+
 
 	return <>
 		<Title>Регистрация</Title>
@@ -39,7 +42,7 @@ export const Auth = () => {
 					</Form.Item>
 
 					<Form.Item>
-						<Button type="primary" htmlType="submit" onClick={() => message.error('123')}>
+						<Button type="primary" htmlType="submit">
 							Register
 						</Button>
 					</Form.Item>
