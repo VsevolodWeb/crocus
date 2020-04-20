@@ -27,8 +27,7 @@ router.post(
 			if(candidate) {
 				return res.status(400).json({message: 'Такой пользователь уже существует'});
 			}
-			
-			const hashedPassword = await bcrypt.hash(password, 123);
+			const hashedPassword = await bcrypt.hash(password, bcrypt.genSaltSync(10));
 			const user = new User({email, password: hashedPassword});
 			
 			await user.save();

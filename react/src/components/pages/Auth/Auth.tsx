@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Form, Input, Button, Checkbox, Col, Row, Typography, Spin, Alert, message} from 'antd';
+import React, {useEffect} from 'react';
+import {Form, Input, Button, Col, Row, Typography, Spin, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {useHttp} from "../../../hooks/http.hook";
 
@@ -11,13 +11,19 @@ export const Auth = () => {
 	const registerHandler = async (values: any) => {
 		try {
 			const data = await request('/api/auth/register', 'POST', {...values});
-			console.log(errors);
+			message.success(data.message)
 		} catch(e) {}
-
 	};
 
-
-
+	useEffect(() => {
+		if(errors?.errors) {
+			errors.errors.forEach(item => {
+				message.error(item.msg)
+			});
+		} else if(errors?.message) {
+			message.error(errors.message);
+		}
+	}, [errors]);
 	return <>
 		<Title>Регистрация</Title>
 		<Spin spinning={loading}>
@@ -26,13 +32,13 @@ export const Auth = () => {
 				<Form onFinish={registerHandler}>
 					<Form.Item
 						name="email"
-						rules={[{ required: true, message: 'Введите ваш e-mail' }, { type: 'email', message: 'Введите правильный e-mail' }]}
+						rules={[{ required: true, message: 'Введите ваш e-mail' }, { type: 'email', message: 'Некорректный e-mail' }]}
 					>
 						<Input prefix={<UserOutlined />} placeholder="E-mail"/>
 					</Form.Item>
 					<Form.Item
 						name="password"
-						rules={[{ required: true, message: 'Введите ваш пароль' }]}
+						rules={[{ required: true, message: 'Введите ваш пароль' }, { min: 6, message: 'Минимальная длина пароля 6 символов' }]}
 					>
 						<Input
 							prefix={<LockOutlined/>}
