@@ -7,7 +7,7 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix react",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently --delay 1500ms \"npm run server\" \"npm run client\""
   },
   "author": "Vsevolod Ivanov <fromdaytoday@icloud.com>",
   "license": "ISC",
@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.3"
   }
 }

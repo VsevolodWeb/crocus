@@ -51,7 +51,7 @@ router.post(
 			const errors = validationResult(req);
 			
 			if(!errors.isEmpty()) {
-				return res.status(400).json({errors: errors.array(), message: 'Некорретные данные при входе в личный кабинет'})
+				return res.status(400).json({errors: errors.array(), message: 'Некорректные данные при входе в личный кабинет'})
 			}
 			
 			const {email, password} = req.body;
@@ -60,8 +60,10 @@ router.post(
 			if(!user) {
 				return res.status(400).json({message: 'Вы не зарегистрированы'});
 			}
+			console.log(user.password2)
 			
 			const isMatch = await bcrypt.compare(password, user.password);
+			console.log(22)
 			
 			if(!isMatch) {
 				return res.status(400).json({message: 'Неверный пароль, попробуйте снова.'});

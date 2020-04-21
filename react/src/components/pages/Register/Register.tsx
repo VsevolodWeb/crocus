@@ -5,12 +5,12 @@ import {useHttp} from "../../../hooks/http.hook";
 
 const { Title } = Typography;
 
-export const Auth = () => {
+export const Register = () => {
 	const {loading, errors, request} = useHttp();
 
-	const loginHandler = async (values: any) => {
+	const registerHandler = async (values: any) => {
 		try {
-			const data = await request('/api/auth/login', 'POST', {...values});
+			const data = await request('/api/auth/register', 'POST', {...values});
 			message.success(data.message)
 		} catch(e) {}
 	};
@@ -25,11 +25,11 @@ export const Auth = () => {
 		}
 	}, [errors]);
 	return <>
-		<Title>Вход в личный кабинет</Title>
+		<Title>Регистрация</Title>
 		<Spin spinning={loading}>
 			<Row>
 			<Col span={6}>
-				<Form onFinish={loginHandler}>
+				<Form onFinish={registerHandler}>
 					<Form.Item
 						name="email"
 						rules={[{ required: true, message: 'Введите ваш e-mail' }, { type: 'email', message: 'Некорректный e-mail' }]}
@@ -49,7 +49,7 @@ export const Auth = () => {
 
 					<Form.Item>
 						<Button type="primary" htmlType="submit">
-							Войти
+							Зарегистрироваться
 						</Button>
 					</Form.Item>
 				</Form>
@@ -59,4 +59,4 @@ export const Auth = () => {
 	</>
 };
 
-export default Auth;
+export default Register;
