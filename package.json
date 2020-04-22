@@ -1,29 +1,32 @@
 {
-  "name": "crocus",
-  "version": "1.0.0",
-  "description": "Crocus Velikie Luki FullStack project",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js",
-    "client": "npm run start --prefix react",
-    "dev": "concurrently --delay 1500ms \"npm run server\" \"npm run client\""
-  },
-  "author": "Vsevolod Ivanov <fromdaytoday@icloud.com>",
-  "license": "ISC",
-  "dependencies": {
-    "@types/bcryptjs": "^2.4.2",
-    "@types/config": "0.0.36",
-    "@types/mongoose": "^5.7.0",
-    "bcryptjs": "^2.4.3",
-    "config": "^3.2.5",
-    "express": "^4.17.1",
-    "express-validator": "^6.4.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.11"
-  },
-  "devDependencies": {
-    "concurrently": "^5.1.0",
-    "nodemon": "^2.0.3"
-  }
+	"name": "crocus",
+	"version": "1.0.0",
+	"description": "Crocus Velikie Luki FullStack project",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"server": "nodemon app.js",
+		"client": "npm run start --prefix react",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	},
+	"author": "Vsevolod Ivanov <fromdaytoday@icloud.com>",
+	"license": "ISC",
+	"nodemonConfig": {
+		"delay": "500"
+	},
+	"dependencies": {
+		"@types/bcryptjs": "^2.4.2",
+		"@types/config": "0.0.36",
+		"@types/mongoose": "^5.7.0",
+		"bcryptjs": "^2.4.3",
+		"config": "^3.2.5",
+		"express": "^4.17.1",
+		"express-validator": "^6.4.0",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^5.8.11"
+	},
+	"devDependencies": {
+		"concurrently": "^5.1.0",
+		"nodemon": "^2.0.3"
+	}
 }

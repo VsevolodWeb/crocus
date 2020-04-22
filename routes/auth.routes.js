@@ -55,15 +55,13 @@ router.post(
 			}
 			
 			const {email, password} = req.body;
-			const user = User.findOne({email});
+			const user = await User.findOne({email});
 			
 			if(!user) {
 				return res.status(400).json({message: 'Вы не зарегистрированы'});
 			}
-			console.log(user.password2)
 			
 			const isMatch = await bcrypt.compare(password, user.password);
-			console.log(22)
 			
 			if(!isMatch) {
 				return res.status(400).json({message: 'Неверный пароль, попробуйте снова.'});
