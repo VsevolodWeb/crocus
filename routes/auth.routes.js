@@ -71,7 +71,7 @@ router.post(
 				{userId: user.id}, config.get('jwtSecret'), {expiresIn: '1h'}
 			);
 			
-			return res.json({ token, userId: user.id});
+			return res.json({ token, userId: user.id, message: 'Вход выполнен'});
 			
 		} catch(e) {
 			res.status(500).json({message: 'Что то пошло не так. Попробуйте снова.'})
