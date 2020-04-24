@@ -1,12 +1,18 @@
 import {useCallback, useEffect, useState} from "react";
 
+
+export type AuthLoginType = (jwtToken: string, id: number) => void;
+export type AuthLogoutType = () => void;
+export type TokenType = null | string;
+export type UserIdType = null | number;
+
 const storageName = 'userData';
 
 export const useAuth = () => {
-	const [token, setToken] = useState(null);
-	const [userId, setUserId] = useState(null);
+	const [token, setToken] = useState<TokenType>(null);
+	const [userId, setUserId] = useState<UserIdType>(null);
 
-	const login = useCallback((jwtToken,  id) => {
+	const login: AuthLoginType = useCallback((jwtToken,  id) => {
 		setToken(jwtToken);
 		setUserId(id);
 
@@ -15,7 +21,7 @@ export const useAuth = () => {
 		}))
 	}, []);
 
-	const logout = useCallback(() => {
+	const logout: AuthLogoutType = useCallback(() => {
 		setToken(null);
 		setUserId(null);
 

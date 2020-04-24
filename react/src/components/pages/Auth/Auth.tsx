@@ -24,37 +24,38 @@ export const Auth = () => {
 			message.error(errors.message);
 		}
 	}, [errors]);
+
 	return <>
 		<Title>Вход в личный кабинет</Title>
 		<Spin spinning={loading}>
 			<Row>
-			<Col span={6}>
-				<Form onFinish={loginHandler}>
-					<Form.Item
-						name="email"
-						rules={[{ required: true, message: 'Введите ваш e-mail' }, { type: 'email', message: 'Некорректный e-mail' }]}
-					>
-						<Input prefix={<UserOutlined />} placeholder="E-mail"/>
-					</Form.Item>
-					<Form.Item
-						name="password"
-						rules={[{ required: true, message: 'Введите ваш пароль' }, { min: 6, message: 'Минимальная длина пароля 6 символов' }]}
-					>
-						<Input
-							prefix={<LockOutlined/>}
-							type="password"
-							placeholder="Пароль"
-						/>
-					</Form.Item>
+				<Col span={6}>
+					<Form onFinish={loginHandler}>
+						<Form.Item
+							name="email"
+							rules={[{ required: true, message: 'Введите ваш e-mail' }, { type: 'email', message: 'Некорректный e-mail' }]}
+						>
+							<Input prefix={<UserOutlined />} placeholder="E-mail"/>
+						</Form.Item>
+						<Form.Item
+							name="password"
+							rules={[{ required: true, message: 'Введите ваш пароль' }, { min: 6, message: 'Минимальная длина пароля 6 символов' }]}
+						>
+							<Input
+								prefix={<LockOutlined/>}
+								type="password"
+								placeholder="Пароль"
+							/>
+						</Form.Item>
 
-					<Form.Item>
-						<Button type="primary" htmlType="submit">
-							Войти
-						</Button>
-					</Form.Item>
-				</Form>
-			</Col>
-		</Row>
+						<Form.Item>
+							<Button type="primary" htmlType="submit">
+								Войти
+							</Button>
+						</Form.Item>
+					</Form>
+				</Col>
+			</Row>
 		</Spin>
 	</>
 };
