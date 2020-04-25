@@ -15,7 +15,7 @@ export const useRoutes = (isAuthenticated: boolean) => {
 				<Route exact path="/categories">
 					<Categories/>
 				</Route>
-				<Redirect to="/404"/>
+				<Redirect to="/products"/>
 			</Switch>
 		)
 	}

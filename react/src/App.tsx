@@ -16,10 +16,11 @@ const {Header, Content, Footer} = Layout;
 
 const App = () => {
 	const {token, login, logout, userId} = useAuth();
-	const routes = useRoutes(false);
+	const isAuthenticated = !!token;
+	const routes = useRoutes(isAuthenticated);
 
 	return (
-		<AuthContext.Provider value={{token, login, logout, userId, isAuthenticated: false}}>
+		<AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
 			<BrowserRouter>
 				<Provider store={store}>
 					<ConfigProvider locale={ruRU}>

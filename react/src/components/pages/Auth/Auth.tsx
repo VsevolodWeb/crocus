@@ -1,17 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Form, Input, Button, Col, Row, Typography, Spin, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {useHttp} from "../../../hooks/http.hook";
+import {AuthContext} from "../../../context/AuthContext";
 
 const { Title } = Typography;
 
 export const Auth = () => {
 	const {loading, errors, request} = useHttp();
+	const auth = useContext(AuthContext);
 
 	const loginHandler = async (values: any) => {
 		try {
 			const data = await request('/api/auth/login', 'POST', {...values});
 			message.success(data.message);
+			auth.login(data.token, data.userId);
 		} catch(e) {}
 	};
 

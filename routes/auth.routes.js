@@ -74,7 +74,7 @@ router.post(
 			return res.json({ token, userId: user.id, message: 'Вход выполнен'});
 			
 		} catch(e) {
-			res.status(500).json({message: 'Что то пошло не так. Попробуйте снова.'})
+			res.status(500).json({message: 'Что то пошло не так. Попробуйте снова.'});
 		}
 	}
 );

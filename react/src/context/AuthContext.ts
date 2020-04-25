@@ -12,7 +12,7 @@ type AuthContextType = {
 export const AuthContext = createContext<AuthContextType>({
 	token: null,
 	userId: null,
-	login: (jwtToken, userId) => {},
+	login: (_jwtToken, _userId) => {},
 	logout: () => {},
 	isAuthenticated: false
 });
