@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import ProductsContainer from "./components/pages/Products/ProductsContainer";
 import Categories from "./components/pages/Categories/Categories";
 import Auth from "./components/pages/Auth/Auth";
@@ -15,7 +15,6 @@ export const useRoutes = (isAuthenticated: boolean) => {
 				<Route exact path="/categories">
 					<Categories/>
 				</Route>
-				<Redirect to="/products"/>
 			</Switch>
 		)
 	}
@@ -25,7 +24,6 @@ export const useRoutes = (isAuthenticated: boolean) => {
 			<Route exact path="/">
 				<Auth/>
 			</Route>
-			<Redirect to="/"/>
 		</Switch>
 	)
 };

@@ -50,7 +50,6 @@ export const Auth = () => {
 								placeholder="Пароль"
 							/>
 						</Form.Item>
-
 						<Form.Item>
 							<Button type="primary" htmlType="submit">
 								Войти

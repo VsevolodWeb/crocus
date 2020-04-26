@@ -13,16 +13,17 @@ const MenuComponent: React.FC<PropsType> = () => {
 			theme="dark"
 			mode="horizontal"
 			className={s.mainMenu}
+			defaultSelectedKeys={[window.location.pathname]}
 		>
-			<Menu.Item>
+			<Menu.Item key="/products">
 				<Link to="/products">
 					Товары
 				</Link>
 			</Menu.Item>
-			<Menu.Item>
+			<Menu.Item key="/categories">
 				<Link to="/categories">
 					Категории
-					</Link>
+				</Link>
 			</Menu.Item>
 		</Menu> : null
 };
