@@ -9,10 +9,10 @@ export const useRoutes = (isAuthenticated: boolean) => {
 	if(isAuthenticated) {
 		return (
 			<Switch>
-				<Route exact path="/products">
+				<Route exact path="/admin/products">
 					<ProductsContainer/>
 				</Route>
-				<Route exact path="/categories">
+				<Route exact path="/admin/categories">
 					<Categories/>
 				</Route>
 			</Switch>
@@ -21,7 +21,7 @@ export const useRoutes = (isAuthenticated: boolean) => {
 
 	return (
 		<Switch>
-			<Route exact path="/">
+			<Route exact path="/admin">
 				<Auth/>
 			</Route>
 		</Switch>

@@ -8,7 +8,7 @@ import {
 	LogoutOutlined
 } from '@ant-design/icons';
 import s from "./Menu.module.css";
-import {AuthContext} from "../../../context/AuthContext";
+import {AuthContext} from "../../../../context/AuthContext";
 import SubMenu from "antd/lib/menu/SubMenu";
 
 type PropsType = {};
@@ -23,14 +23,14 @@ const MenuComponent: React.FC<PropsType> = () => {
 			className={s.mainMenu}
 			defaultSelectedKeys={[window.location.pathname]}
 		>
-			<Menu.Item key="/products">
-				<Link to="/products">
+			<Menu.Item key="/admin/products">
+				<Link to="/admin/products">
 					<InboxOutlined />
 					Товары
 				</Link>
 			</Menu.Item>
-			<Menu.Item key="/categories">
-				<Link to="/categories">
+			<Menu.Item key="/admin/categories">
+				<Link to="/admin/categories">
 					<UnorderedListOutlined />
 					Категории
 				</Link>

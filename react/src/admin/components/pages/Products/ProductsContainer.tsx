@@ -5,13 +5,13 @@ import {CheckOutlined, CloseOutlined, EditOutlined, SaveOutlined} from '@ant-des
 import s from "./Products.module.css";
 import {ColumnsType} from "antd/lib/table";
 import Products from "./Products";
-import {AppStateType} from "../../../redux/store";
+import {AppStateType} from "../../../../redux/store";
 import {
 	ProductOptionsType, ProductType,
 	setLoadingActionCreator, SetLoadingActionCreatorType, switchPublishActionCreator, SwitchPublishActionCreatorType,
 	switchStockActionCreator, SwitchStockActionCreatorType
-} from "../../../redux/products-reducer";
-import {CategoryType} from "../../../redux/categories-reducer";
+} from "../../../../redux/products-reducer";
+import {CategoryType} from "../../../../redux/categories-reducer";
 
 
 type OwnType = {};

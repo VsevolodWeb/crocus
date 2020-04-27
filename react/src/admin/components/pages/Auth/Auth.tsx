@@ -1,8 +1,8 @@
 import React, {useContext, useEffect} from 'react';
 import {Form, Input, Button, Col, Row, Typography, Spin, message} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {useHttp} from "../../../hooks/http.hook";
-import {AuthContext} from "../../../context/AuthContext";
+import {useHttp} from "../../../../hooks/http.hook";
+import {AuthContext} from "../../../../context/AuthContext";
 
 const { Title } = Typography;
 

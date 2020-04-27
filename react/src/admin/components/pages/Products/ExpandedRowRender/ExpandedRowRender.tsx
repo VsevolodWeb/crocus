@@ -6,8 +6,8 @@ import 'moment/locale/ru';
 
 import PicturesWall from "./../PicturesWall/PicturesWall";
 import s from "./ExpandedRowRender.module.css";
-import {ProductOptionsType, ProductType} from "../../../../redux/products-reducer";
-import {CategoryType} from "../../../../redux/categories-reducer";
+import {ProductOptionsType, ProductType} from "../../../../../redux/products-reducer";
+import {CategoryType} from "../../../../../redux/categories-reducer";
 
 const { Option } = Select;
 const { TextArea } = Input;
