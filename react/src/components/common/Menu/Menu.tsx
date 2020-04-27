@@ -1,13 +1,21 @@
 import React, {useContext} from 'react';
 import {Menu} from 'antd';
 import {Link} from "react-router-dom";
+import {
+	InboxOutlined,
+	UnorderedListOutlined,
+	UserOutlined,
+	LogoutOutlined
+} from '@ant-design/icons';
 import s from "./Menu.module.css";
 import {AuthContext} from "../../../context/AuthContext";
+import SubMenu from "antd/lib/menu/SubMenu";
 
 type PropsType = {};
 
 const MenuComponent: React.FC<PropsType> = () => {
 	const auth = useContext(AuthContext);
+
 	return auth.isAuthenticated ?
 		<Menu
 			theme="dark"
@@ -17,14 +25,32 @@ const MenuComponent: React.FC<PropsType> = () => {
 		>
 			<Menu.Item key="/products">
 				<Link to="/products">
+					<InboxOutlined />
 					Товары
 				</Link>
 			</Menu.Item>
 			<Menu.Item key="/categories">
 				<Link to="/categories">
+					<UnorderedListOutlined />
 					Категории
 				</Link>
 			</Menu.Item>
+			<SubMenu
+				key="user-settings"
+				title={
+					<span>
+						<UserOutlined />
+						Личный кабинет
+					</span>
+				}
+			>
+				<Menu.Item key="/logout">
+					<Link to="/logout">
+						<LogoutOutlined />
+						Выйти
+					</Link>
+				</Menu.Item>
+			</SubMenu>
 		</Menu> : null
 };
 
