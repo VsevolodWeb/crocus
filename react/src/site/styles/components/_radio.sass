@@ -1,0 +1,42 @@
+.radio
+	display: flex
+	position: relative
+	cursor: pointer
+	font-size: 14px
+
+	&:hover
+		color: #000
+
+	input
+		position: absolute
+		opacity: 0
+		cursor: pointer
+
+		&:checked ~ .radio__mark
+			&::after
+				display: block
+
+	&__mark
+		display: inline-block
+		width: 17px
+		height: 17px
+		flex: none
+		background-color: #fff
+		border-radius: 50%
+		border: 1px solid #BDBDBD
+		position: relative
+		margin:
+			top: 2px
+			right: 8px
+
+		&::after
+			$markInnerSize: 9px
+			display: none
+			content: ''
+			position: absolute
+			top: calc(50% - (#{$markInnerSize} / 2))
+			left: calc(50% - (#{$markInnerSize} / 2))
+			width: $markInnerSize
+			height: $markInnerSize
+			border-radius: 50%
+			background-color: $color-default

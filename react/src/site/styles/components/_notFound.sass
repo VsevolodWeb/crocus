@@ -1,0 +1,28 @@
+.notFound
+	text-align: center
+
+	&__image
+		width: 390px
+		max-width: 100%
+
+	&__text
+		margin:
+			top: 58px
+			right: auto
+			left: auto
+		font-family: $font-accent
+		max-width: 720px
+
+		@include respond-above(md)
+			font-size: 20px
+
+		@include respond-below(md)
+			font-size: 16px
+
+		a
+			@extend .link
+
+	&__form
+		margin-top: 38px
+		display: flex
+		justify-content: center

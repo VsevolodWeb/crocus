@@ -1,0 +1,48 @@
+.checkbox
+	display: inline-flex
+	position: relative
+	cursor: pointer
+	font-size: 16px
+	user-select: none
+
+	&:hover
+		color: #000
+
+	input
+		position: absolute
+		opacity: 0
+		cursor: pointer
+		height: 0
+		width: 0
+
+		&:checked ~ .checkbox__mark
+			border-color: $color-default
+
+			&::after
+				display: block
+
+	&__mark
+		$size: 22px
+		display: inline-block
+		height: $size
+		width: $size
+		background-color: #fff
+		border-radius: 3px
+		border:
+			width: 1px
+			style: solid
+			color: #979797
+		margin-right: 8px
+		flex: none
+
+		&::after
+			content: ''
+			position: absolute
+			display: none
+			left: 8px
+			top: 3px
+			width: 6px
+			height: 12px
+			border: solid $color-default
+			border-width: 0 1px 1px 0
+			transform: rotate(40deg)

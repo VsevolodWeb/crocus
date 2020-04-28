@@ -1,0 +1,36 @@
+.title
+	font:
+		family: $font-accent
+
+	&_md
+		@include respond-above(sm)
+			font-size: 36px
+
+		@include respond-below(sm)
+			font-size: 24px
+
+	&_lg
+		@include respond-above(sm)
+			font-size: 40px
+
+		@include respond-below(sm)
+			font-size: 28px
+
+.paragraph
+	margin:
+		top: 0
+		bottom: 0
+
+	&:not(:last-child)
+		margin-bottom: 14px
+
+	a
+		@extend .link
+
+	&Wrapper
+		margin:
+			left: auto
+			right: auto
+
+		@include respond-above(sm)
+			width: 560px

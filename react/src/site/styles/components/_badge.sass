@@ -1,0 +1,36 @@
+$badge-class: "badge"
+
+.#{$badge-class}
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2)
+	border-radius: 13px
+	color: #fff
+	font-size: 14px
+	padding: 6px 14px
+	height: 26px
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	position: relative
+
+	&_purple
+		$modifier-color: #DB2F77
+		background-color: $modifier-color
+
+		.#{$badge-class}__tooltipIcon::after
+			color: $modifier-color
+
+	&_green
+		background-color: #1AC72C
+
+	&_orange
+		background-color: #EB4815
+
+	&__tooltip
+		$tooltip-position: -($tooltip-icon-size / 4)
+		position: absolute
+		right: $tooltip-position
+		top: $tooltip-position
+		color: initial
+
+		&Icon
+			background-color: #fff

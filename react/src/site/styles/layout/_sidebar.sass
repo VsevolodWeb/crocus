@@ -1,0 +1,42 @@
+$sidebar-categories-gap: 8px
+
+.sidebar
+	@include respond-below(sm)
+		margin-bottom: 60px
+
+	&__title
+		font-weight: 700
+		margin-bottom: 28px
+
+	&__item:not(:last-child)
+		margin-bottom: 86px
+
+	&__formGroup:not(:last-child)
+		margin-bottom: 24px
+
+	&__categories, &__subcategories
+		display: grid
+		grid-gap: $sidebar-categories-gap
+		list-style-type: none
+
+	&__categories
+		padding-left: 0
+		max-height: 300px
+		overflow: auto
+
+		&Item
+			display: block
+
+	&__subcategories
+		margin-top: $sidebar-categories-gap
+
+	&__footer
+		display: grid
+		grid-gap: 10px
+		text-align: center
+
+	&__filter
+		margin-bottom: 20px
+
+		@include respond-above(sm)
+			display: none

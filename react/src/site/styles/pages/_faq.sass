@@ -1,0 +1,16 @@
+.faq
+	display: grid
+
+	@include respond-above(sm)
+		row-gap: 36px
+
+	@include respond-below(sm)
+		row-gap: 18px
+
+	&__title
+		font-weight: 700
+		display: inline-block
+		margin-bottom: 11px
+
+		@include respond-above(sm)
+			font-size: 24px

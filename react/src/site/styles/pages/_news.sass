@@ -1,0 +1,36 @@
+.news
+	display: grid
+
+	@include respond-above(sm)
+		row-gap: 90px
+
+	@include respond-below(sm)
+		row-gap: 40px
+
+	&__title
+		@extend .link
+		font-weight: 700
+
+		@include respond-above(sm)
+			font-size: 22px
+
+		@include respond-below(sm)
+			font-size: 18px
+
+	&__date
+		font-style: italic
+		margin-top: 4px
+
+	&__text
+		margin:
+			top: 20px
+			bottom: 20px
+
+	&__more
+		display: flex
+		margin:
+			left: auto
+			right: auto
+
+		&::before
+			background-image: url("/assets/img/pages/catalog/more.svg")

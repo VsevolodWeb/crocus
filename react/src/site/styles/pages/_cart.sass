@@ -1,0 +1,128 @@
+.cart
+	display: grid
+
+	@include respond-above(md)
+		grid-template-columns: 8fr 3fr
+		column-gap: 50px
+
+	@include respond-below(md)
+		row-gap: 50px
+
+	&__button
+		margin-top: 18px
+
+	&__warning
+		color: #17944C
+		margin-top: 22px
+
+.cartTable
+	width: 100%
+	$table-indent: 7px
+	margin-left: -$table-indent
+
+	th
+		text-align: left
+
+	th, td
+		padding: $table-indent
+
+		&:not(:first-child):not(:last-child)
+			text-align: center
+
+	&__last
+		text-align: right !important
+		font-weight: 700
+
+.cartResult
+	background-color: rgba($color-default, .03)
+	border-radius: 8px
+	text-align: center
+	height: max-content
+	padding: 30px 25px
+
+	&__title
+		font:
+			size: 12px
+			weight: 700
+
+	&__price
+		font:
+			size: 32px
+			weight: 700
+		color: $color-default
+		line-height: 1.2
+
+	&__text
+		margin:
+			top: 8px
+			bottom: 24px
+		font-size: 16px
+
+.cartButton
+	&__control
+		$backgroundColor: #69D018
+		display: inline-flex
+		align-items: center
+		font:
+			family: $font-accent
+			size: 24px
+		color: $color-default
+		background:
+			//image: linear-gradient(90deg, rgba(#69D018, .16) 0%, rgba(#69D018, .16) 50%, rgba(0, 0, 0, 0) 50%)
+			//color: transparent
+			color: rgba($backgroundColor, .16)
+		border-width: 0
+		padding: 5px 30px
+		border-radius: 35px
+		height: 48px
+		text-decoration: none
+
+		&::before
+			$imageSize: 37px
+			content: ''
+			background-image: url("/assets/img/partials/headerWrapper/cart.svg")
+			width: $imageSize
+			height: $imageSize
+			margin-right: 11px
+
+		&:hover
+			background-color: rgba($backgroundColor, .2)
+
+		&:active
+			background-color: rgba($backgroundColor, .3)
+
+	&__content
+		font-size: 15px
+
+	&__title
+		font-weight: 700
+
+	&__list
+		display: grid
+		grid-row-gap: 8px
+		margin:
+			top: 10px
+			bottom: 10px
+		padding-left: 14px
+
+	&__listFooter
+		margin-top: 12px
+		font-size: $font-size-default
+		text-align: center
+
+	&__warning
+		@extend .filter-darken
+
+		text-align: center
+		margin:
+			top: 20px
+			bottom: 20px
+		font-weight: 700
+
+	&__footer
+		display: inline-flex
+		flex-direction: column
+		align-items: flex-start
+
+	&__footerLink:not(:last-child)
+		margin-bottom: 5px

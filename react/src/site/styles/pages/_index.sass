@@ -1,0 +1,64 @@
+.advantagesBlock
+	display: grid
+	grid-gap: $gap-sm
+
+	@include respond-above(lg)
+		grid-template-columns: repeat(4, 1fr)
+
+	@include respond-between(xs, lg)
+		grid-template-columns: repeat(2, 1fr)
+
+	@include respond-below(xs)
+		grid-template-columns: 1fr
+
+	&__item
+		background-color: rgba($color-secondary, .45)
+		box-shadow: 0 0 75px rgba(0, 0, 0, .09)
+		border-radius: 8px
+		padding: 26px 22px
+
+	&__title
+		font:
+			size: 27px
+			weight: 700
+		margin-bottom: 6px
+
+	&__text
+		font-style: italic
+
+.stepsBlock
+	display: grid
+	grid-gap: $gap-sm
+
+	&__number
+		color: $color-default
+		font-family: $font-accent
+		line-height: 1.2
+		margin-bottom: 7px
+
+	&__title
+		font-weight: 700
+		margin-bottom: 7px
+
+	@include respond-above(md)
+		grid-template-columns: repeat(4, 1fr)
+
+	@include respond-above(sm)
+		&__number
+			font-size: 80px
+
+		&__title
+			font-size: 27px
+
+	@include respond-between(xs, md)
+		grid-template-columns: 1fr 1fr
+
+	@include respond-below(sm)
+		&__number
+			font-size: 48px
+
+		&__title
+			font-size: 18px
+
+	@include respond-below(xs)
+		grid-template-columns: 1fr

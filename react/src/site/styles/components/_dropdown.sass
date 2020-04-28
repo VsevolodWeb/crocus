@@ -1,0 +1,35 @@
+$indentInDropdown: 18px
+
+.dropdown
+	position: relative
+
+	&__list
+		position: absolute
+		top: 100%
+		list-style-type: none
+		margin:
+			top: 7px
+			bottom: 0
+		padding:
+			top: $indentInDropdown / 2
+			bottom: $indentInDropdown / 2
+			left: 0
+		width: 100%
+		background-color: #fff
+		box-shadow: 0 0 17px rgba(0, 0, 0, 0.12)
+		border-radius: 5px
+
+	&__button
+		$backgroundColorButtonEffect: $color-secondary
+		background-color: transparent
+		padding: $indentInDropdown / 2 $indentInDropdown
+		width: 100%
+		border-width: 0
+		text-align: left
+		font-size: 12px
+
+		&:hover
+			background-color: rgba($backgroundColorButtonEffect, .35)
+
+		&:active
+			background-color: $backgroundColorButtonEffect

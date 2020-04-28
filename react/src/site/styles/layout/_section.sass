@@ -1,0 +1,28 @@
+.section
+	@include respond-above(md)
+		padding:
+			top: 62px
+			bottom: 62px
+		margin:
+			top: 62px
+			bottom: 62px
+
+	@include respond-below(md)
+		padding:
+			top: 36px
+			bottom: 36px
+		margin:
+			top: 36px
+			bottom: 36px
+
+	&__title
+		margin-top: 0
+
+		a
+			@extend .link
+
+		@include respond-above(md)
+			margin-bottom: 42px
+
+		@include respond-below(md)
+			margin-bottom: 24px

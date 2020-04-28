@@ -1,0 +1,101 @@
+$steps-class: steps
+
+.#{$steps-class}
+	display: flex
+	justify-content: center
+	margin-bottom: 60px
+
+	&__item
+		color: inherit
+		text-decoration: none
+
+		&:not(.disabled):not(.passed)
+			cursor: default
+
+		&.disabled
+			filter: grayscale(1)
+			opacity: .4
+			cursor: not-allowed
+
+		&.passed
+			.#{$steps-class}__icon
+				background-color: #fff
+				color: $color-default
+				border: 4px solid $color-default
+
+			&:hover
+				@extend .filter-lighten
+
+			&:active
+				@extend .filter-darken
+
+		@include respond-above(sm)
+			&:not(:last-child)
+				margin-right: 52px
+
+		@include respond-below(sm)
+			&:not(:last-child)
+				margin-right: 12px
+
+	&__icon
+		margin:
+			right: auto
+			left: auto
+		border-radius: 50%
+		display: flex
+		align-items: center
+		justify-content: center
+		background-color: $color-default
+		color: #fff
+		font-family: $font-accent
+		margin-bottom: 10px
+
+		@include respond-above(sm)
+			width: 55px
+			height: 55px
+			font-size: 30px
+
+		@include respond-below(sm)
+			width: 35px
+			height: 35px
+			font-size: 18px
+
+	&__title
+		font-weight: 700
+
+		@include respond-below(sm)
+			font-size: 13px
+
+
+.checkout
+	display: grid
+	row-gap: 34px
+
+.checkoutDelivery
+	@include respond-above(sm)
+		width: 40%
+
+	&__item
+		display: grid
+		row-gap: 12px
+
+	&__logo
+		width: 100px
+
+.checkoutUserInfo
+	@include respond-above(sm)
+		width: 80%
+
+	&__fields
+		display: grid
+
+		@include respond-above(sm)
+			grid-template-columns: repeat(3, 1fr)
+			grid-gap: 30px
+
+		@include respond-below(sm)
+			grid-gap: 20px
+
+	&__warning
+		color: $color-default
+		@extend .filter-darken

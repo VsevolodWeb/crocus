@@ -1,13 +1,11 @@
-import React from 'react'
-import { ConfigProvider } from 'antd';
-import ruRU from 'antd/es/locale/ru_RU';
+import React, { Suspense } from 'react'
 import {Provider} from "react-redux";
 import {Switch, BrowserRouter, Route} from "react-router-dom";
 import store from "./redux/store";
 import {useAuth} from "./hooks/auth.hook";
 import {AuthContext} from "./context/AuthContext";
-import Admin from "./admin/Admin";
-import Site from "./site/Site";
+const Admin = React.lazy(() => import('./admin/Admin'));
+const Site = React.lazy(() => import('./site/Site'));
 
 
 const App = () => {
@@ -18,16 +16,18 @@ const App = () => {
 		<AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
 			<BrowserRouter>
 				<Provider store={store}>
-					<ConfigProvider locale={ruRU}>
-						<Switch>
-							<Route path="/admin">
-								<Admin isAuthenticated={isAuthenticated} />
-							</Route>
-							<Route path="/">
+					<Switch>
+						<Route path="/admin">
+							<Suspense fallback={<div>Загрузка</div>}>
+								<Admin isAuthenticated={isAuthenticated}/>
+							</Suspense>
+						</Route>
+						<Route path="/">
+							<Suspense fallback={<div>Загрузка</div>}>
 								<Site/>
-							</Route>
-						</Switch>
-					</ConfigProvider>
+							</Suspense>
+						</Route>
+					</Switch>
 				</Provider>
 			</BrowserRouter>
 		</AuthContext.Provider>

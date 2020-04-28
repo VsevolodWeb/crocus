@@ -1,0 +1,23 @@
+*
+	box-sizing: border-box
+
+	&:hover, &:focus, &:active
+		transition: .3s
+
+::selection
+	background-color: $color-secondary
+	color: #fff
+
+body
+	font-family: $font-common
+	line-height: 1.5
+	color: $color-common
+
+	@include respond-above(sm)
+		font-size: $font-size-default
+
+	@include respond-below(sm)
+		font-size: $font-size-default - 3px
+
+button:hover
+	cursor: pointer

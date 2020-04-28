@@ -1,0 +1,29 @@
+.catalog
+	&Layout
+		@include respond-above(sm)
+			display: grid
+			grid-template-columns: 3fr 9fr
+			column-gap: 10%
+
+	&Info
+		&__title
+			margin:
+				top: 0
+				bottom: 28px
+
+	&__products
+		display: grid
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+		grid-column-gap: 30px
+		grid-row-gap: 45px
+		margin-top: 32px
+
+	&__more
+		display: flex
+		margin:
+			top: 52px
+			left: auto
+			right: auto
+
+		&::before
+			background-image: url("/assets/img/pages/catalog/more.svg")

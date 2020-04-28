@@ -1,0 +1,21 @@
+.sliderPagination
+	display: flex
+	justify-content: center
+
+	&Item
+		width: 15px
+		height: 15px
+		background-color: $color-common
+		border-radius: 50%
+		border-width: 0
+		opacity: .25
+
+		&:hover
+			opacity: .5
+
+		&:not(:last-child)
+			margin-right: 18px
+
+		&_active
+			opacity: .75
+			pointer-events: none

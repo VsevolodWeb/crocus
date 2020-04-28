@@ -1,0 +1,40 @@
+.reviews
+	&__list
+		display: grid
+		row-gap: 80px
+
+		@include respond-above(sm)
+			row-gap: 80px
+
+		@include respond-below(sm)
+			row-gap: 50px
+
+	&__title
+		font-size: 16px
+
+	&__text
+		font-style: italic
+		margin:
+			top: 16px
+			bottom: 16px
+
+		@include respond-above(sm)
+			font-size: 20px
+
+		@include respond-below(sm)
+			font-size: 16px
+
+	&__date
+		font-size: 16px
+
+.reviewsForm
+	display: grid
+	row-gap: 23px
+	margin-top: 33px
+
+	@include respond-above(sm)
+		width: 40%
+		margin-bottom: 125px
+
+	@include respond-below(sm)
+		margin-bottom: 50px

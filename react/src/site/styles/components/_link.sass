@@ -1,0 +1,24 @@
+.link
+	text-underline-position: under
+	position: relative
+	color: inherit
+
+	&:hover
+		text-decoration: none
+
+	&:active
+		@extend .filter-darken
+
+	&_dashed
+		text-decoration-style: dashed
+
+	&_accent
+		color: $color-default
+
+	&__icon
+		width: 11px
+		height: 17px
+		vertical-align: middle
+		margin-left: 10px
+		fill: currentColor
+		position: relative

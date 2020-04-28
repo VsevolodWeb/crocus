@@ -1,0 +1,82 @@
+\:root
+	@include respond-above(sm)
+		--indentInFormElement: 14px
+
+	@include respond-below(sm)
+		--indentInFormElement: 8px
+
+$borderWidthFormElement: 1px
+$backgroundColorFormElement: #fff
+$defaultZIndexLabelFormElement: 0
+
+.formElement
+	position: relative
+	display: flex
+
+	@include respond-below(xs)
+		flex-direction: column
+
+	&__label
+		$fontSizeFormElement: 10px
+		position: absolute
+		z-index: $defaultZIndexLabelFormElement
+		font-size: $fontSizeFormElement
+		line-height: $fontSizeFormElement
+		left: calc(var(--indentInFormElement) + #{$borderWidthFormElement})
+		top: calc(-#{$fontSizeFormElement} / 2)
+
+		&::before
+			$indentLabelFormElement: 5px
+			content: ''
+			position: absolute
+			background-color: $backgroundColorFormElement
+			height: $borderWidthFormElement
+			width: calc(100% + #{$indentLabelFormElement * 2})
+			left: -$indentLabelFormElement
+			top: 50%
+			z-index: $defaultZIndexLabelFormElement - 1
+
+		&_required::after
+			content: '*'
+			margin-left: 2px
+			color: $color-default
+			font-weight: 700
+
+	&__item
+		background-color: $backgroundColorFormElement
+		border-radius: 5px
+		width: 270px
+		border:
+			width: $borderWidthFormElement
+			style: solid
+			color: $color-gray
+		padding:
+			right: var(--indentInFormElement)
+			left: var(--indentInFormElement)
+		min-height: 40px
+
+		&::placeholder
+			color: $color-gray
+
+		&:hover
+			border-color: $color-common
+
+		&:focus
+			outline-width: 0
+			border-color: $color-default
+
+		&_fullWidth
+			width: 100%
+
+		@include respond-above(sm)
+			font-size: 16px
+
+		@include respond-below(sm)
+			font-size: 13px
+
+	&__button
+		@include respond-above(xs)
+			margin-left: 18px
+
+		@include respond-below(xs)
+			margin-top: 12px

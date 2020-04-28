@@ -1,7 +1,9 @@
 import React from 'react';
+import Header from "./components/Header/Header";
+import './styles/main.sass'
 
 const Site = () => {
-	return <h1>This is site</h1>
+	return <Header/>
 };
 
 export default Site;
