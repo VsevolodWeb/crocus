@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Menu} from 'antd';
+import {Menu, message} from 'antd';
 import {Link} from "react-router-dom";
 import {
 	InboxOutlined,
@@ -10,11 +10,17 @@ import {
 import s from "./Menu.module.css";
 import {AuthContext} from "../../../../context/AuthContext";
 import SubMenu from "antd/lib/menu/SubMenu";
+import {useHttp} from "../../../../hooks/http.hook";
 
 type PropsType = {};
 
 const MenuComponent: React.FC<PropsType> = () => {
 	const auth = useContext(AuthContext);
+
+	const logoutHandler = (event: React.MouseEvent) => {
+		event.preventDefault();
+		auth.logout();
+	};
 
 	return auth.isAuthenticated ?
 		<Menu
@@ -44,11 +50,11 @@ const MenuComponent: React.FC<PropsType> = () => {
 					</span>
 				}
 			>
-				<Menu.Item key="/logout">
-					<Link to="/logout">
+				<Menu.Item key="logout">
+					<a href="/" onClick={logoutHandler}>
 						<LogoutOutlined />
 						Выйти
-					</Link>
+					</a>
 				</Menu.Item>
 			</SubMenu>
 		</Menu> : null

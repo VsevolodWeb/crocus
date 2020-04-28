@@ -2,7 +2,7 @@ import React from "react";
 import {Spin, Table, Typography} from "antd";
 import ExpandedRowRender from "./ExpandedRowRender/ExpandedRowRender";
 import {ColumnsType} from "antd/lib/table";
-import {ProductType} from "../../../../redux/products-reducer";
+import {ProductType} from "../../../redux/products-reducer";
 import {MapStateToPropsType} from "./ProductsContainer";
 const {Title} = Typography;
 
