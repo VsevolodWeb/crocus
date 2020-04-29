@@ -1,9 +1,15 @@
 import React from 'react';
-import Header from "./components/Header/Header";
 import './styles/main.sass'
+import Main from "./pages/Main/Main";
+import Icons from "./components/Icons/Icons";
 
 const Site = () => {
-	return <Header/>
+	return (
+		<>
+			<Main/>
+			<Icons/>
+		</>
+	)
 };
 
 export default Site;

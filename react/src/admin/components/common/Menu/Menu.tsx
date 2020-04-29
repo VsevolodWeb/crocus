@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Menu, message} from 'antd';
+import {Menu} from 'antd';
 import {Link} from "react-router-dom";
 import {
 	InboxOutlined,
@@ -10,7 +10,6 @@ import {
 import s from "./Menu.module.css";
 import {AuthContext} from "../../../../context/AuthContext";
 import SubMenu from "antd/lib/menu/SubMenu";
-import {useHttp} from "../../../../hooks/http.hook";
 
 type PropsType = {};
 

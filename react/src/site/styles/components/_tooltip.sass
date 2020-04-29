@@ -3,7 +3,7 @@ $tooltip-content-triangle-height: 6px
 
 .tooltip
 	display: inline-block
-	position: relative
+	margin-left: 8px
 
 	&__icon
 		width: $tooltip-icon-size
@@ -14,7 +14,6 @@ $tooltip-content-triangle-height: 6px
 		vertical-align: middle
 		border-radius: 50%
 		background-color: $color-default
-		margin-left: 8px
 
 		&::after
 			content: '?'
@@ -22,34 +21,11 @@ $tooltip-content-triangle-height: 6px
 			font-weight: 700
 			color: #fff
 
-	&:hover &__content
-		opacity: 1
-		visibility: visible
-		max-height: 500px
-		padding: 10px 15px
-		transition: opacity .3s
-
 	&__content
-		position: absolute
-		z-index: 1
-		top: calc(100% + #{$tooltip-content-triangle-height + 7px})
 		background-color: #fff
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.05)
 		border-radius: 5px
 		font-size: 14px
-		max-height: 0
-		opacity: 0
-		visibility: hidden
-		transition: .3s, padding 2s
 
 		@include respond-above(md)
 			width: 240px
-
-		&::after
-			content: ''
-			top: -$tooltip-content-triangle-height
-			left: 10px
-			position: absolute
-			border-left: 5px solid transparent
-			border-right: 5px solid transparent
-			border-bottom: $tooltip-content-triangle-height solid #fff
