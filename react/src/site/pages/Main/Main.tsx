@@ -1,5 +1,8 @@
 import React from 'react';
+import { Fade } from 'react-slideshow-image';
+
 import Header from "../../components/Header/Header";
+import slide1 from "../../assets/img/pages/main/slides/slide1.svg";
 
 const Main = () => {
 	return <>
@@ -22,7 +25,7 @@ const Main = () => {
 							</a>
 						</div>
 						<div className="slider__img">
-							<img src="assets/img/pages/main/slides/slide1.svg" alt="Весенняя распродажа остатков"/>
+							<img src={slide1} alt="Весенняя распродажа остатков"/>
 						</div>
 					</div>
 				</div>

@@ -18,11 +18,16 @@ const Header = () => {
 						<a data-tip data-for="city-selection">
 							<div className="tooltip__icon"/>
 						</a>
-						<ReactTooltip id="city-selection" place="bottom" effect="solid" className="tooltip__content">
-							Ваше местоположение определилось для того, чтобы рассчитать
-							доставку.<br/>
-							Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным
-							пунктом.
+						<ReactTooltip
+							id="city-selection"
+							place="bottom"
+							effect="solid"
+							className="tooltip__content"
+							textColor="var(--color-common)"
+							backgroundColor="var(--tooltip-background-color)"
+						>
+							Ваше местоположение определилось для того, чтобы рассчитать доставку.<br/>
+							Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным пунктом.
 						</ReactTooltip>
 					</div>
 				</div>
