@@ -1,8 +1,8 @@
-const {Schema, model, Types} = require('mongoose');
+const {Schema, model} = require('mongoose');
 
 const schema = new Schema({
-	key: Number,
-	name: String,
+	key: {type: Number, required: true, unique: true},
+	name: {type: String, required: true, unique: true},
 	categoryId: Number,
 	description: String,
 	price: Number,
