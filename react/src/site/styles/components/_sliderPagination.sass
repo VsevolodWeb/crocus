@@ -1,13 +1,10 @@
-.sliderPagination
-	display: flex
-	justify-content: center
-
-	&Item
+.react-slideshow-container + div.indicators
+	> div
 		width: 15px
 		height: 15px
 		background-color: $color-common
-		border-radius: 50%
 		border-width: 0
+		margin: 0
 		opacity: .25
 
 		&:hover
@@ -16,6 +13,7 @@
 		&:not(:last-child)
 			margin-right: 18px
 
-		&_active
+		&.active
 			opacity: .75
 			pointer-events: none
+			background-color: $color-common
