@@ -3,25 +3,25 @@ const {Schema, model} = require('mongoose');
 const schema = new Schema({
 	key: {type: Number, required: true, unique: true},
 	name: {type: String, required: true, unique: true},
-	categoryId: Number,
-	description: String,
-	price: Number,
-	tags: [{type: String}],
-	floweringTime: [{type: String}],
+	categoryId: {type: Number, required: true},
+	description: {type: String, required: true},
+	price: {type: Number, required: true},
+	tags: [{type: String, required: true}],
+	floweringTime: [{type: String, required: true}],
 	flowerDiameter: {
-		size: Number,
-		unit: String
+		size: {type: Number, required: true},
+		unit: {type: String, required: true}
 	},
 	plantHeight: {
-		from: Number,
-		to: Number,
-		unit: String
+		from: {type: Number, required: true},
+		to: {type: Number, required: true},
+		unit: {type: String, required: true}
 	},
-	plantingLocation: String,
-	frostResistance: String,
-	isPublished: Boolean,
-	inStock: Boolean,
-	minAmount: Number
+	plantingLocation: {type: String, required: true},
+	frostResistance: {type: String, required: true},
+	isPublished: {type: Boolean, required: true},
+	inStock: {type: Boolean, required: true},
+	minAmount: {type: Number, required: true}
 	//photos: ??
 });
 
