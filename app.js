@@ -1,7 +1,6 @@
 const express = require('express');
 const config = require('config');
 const mongoose = require('mongoose');
-const kill = require('kill-port');
 
 const app = express();
 app.use(express.json({ extended: true }));
@@ -19,14 +18,6 @@ async function start() {
 		
 		app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`));
 	} catch(e) {
-		setTimeout(() => {
-			
-			// Currently you can kill ports running on TCP or UDP protocols
-			kill(PORT, 'tcp')
-				.then(console.log)
-				.catch(console.log)
-		}, 1000);
-		
 		console.log('Server error', e.message);
 		process.exit(1);
 	}

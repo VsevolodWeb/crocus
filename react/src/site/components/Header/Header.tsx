@@ -15,9 +15,9 @@ const Header = () => {
 				<div>
 					<a className="link link_dashed link_accent" href="!#">Санкт-Петербург</a>
 					<div className="tooltip">
-						<span data-tip data-for="city-selection">
+						<a data-tip data-for="city-selection">
 							<div className="tooltip__icon"/>
-						</span>
+						</a>
 						<ReactTooltip
 							id="city-selection"
 							place="bottom"

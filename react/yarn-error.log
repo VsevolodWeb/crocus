@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/vsevolod/.nvm/versions/node/v10.14.2/bin/node /Users/vsevolod/.yarn/bin/yarn.js add @types/react-slideshow-image
+  /Users/vsevolod/.nvm/versions/node/v10.14.2/bin/node /Users/vsevolod/.yarn/bin/yarn.js add -D @types/react-slideshow-image
 
 PATH: 
   /Users/vsevolod/.yarn/bin:/Users/vsevolod/.config/yarn/global/node_modules/.bin:/Users/vsevolod/.nvm/versions/node/v10.14.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
