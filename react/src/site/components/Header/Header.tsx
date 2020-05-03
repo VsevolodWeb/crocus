@@ -3,7 +3,7 @@ import s from './Header.module.sass';
 import logo from '../../assets/img/logo.svg';
 import {Link, NavLink} from "react-router-dom";
 import classNames from "classnames";
-import ReactTooltip from "react-tooltip";
+import ReactTooltipWrapper from "../../utils/ReactTooltipWrapper.util";
 
 const Header = () => {
 	return (
@@ -14,22 +14,10 @@ const Header = () => {
 			<div className={s.header__location}>
 				<div>
 					<a className="link link_dashed link_accent" href="!#">Санкт-Петербург</a>
-					<div className="tooltip">
-						<span data-tip data-for="city-selection">
-							<div className="tooltip__icon"/>
-						</span>
-						<ReactTooltip
-							id="city-selection"
-							place="bottom"
-							effect="solid"
-							className="tooltip__content"
-							textColor="var(--color-common)"
-							backgroundColor="var(--tooltip-background-color)"
-						>
-							Ваше местоположение определилось для того, чтобы рассчитать доставку.<br/>
-							Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным пунктом.
-						</ReactTooltip>
-					</div>
+					<ReactTooltipWrapper id="city-selection">
+						Ваше местоположение определилось для того, чтобы рассчитать доставку.<br/>
+						Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным пунктом.
+					</ReactTooltipWrapper>
 				</div>
 				<div className="formElement" style={{display: "none"}}>
 					<div className="dropdown">
