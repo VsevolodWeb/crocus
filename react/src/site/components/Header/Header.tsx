@@ -4,6 +4,7 @@ import logo from '../../assets/img/logo.svg';
 import {Link, NavLink} from "react-router-dom";
 import classNames from "classnames";
 import ReactTooltipWrapper from "../../utils/ReactTooltipWrapper.util";
+import MenuList, {MenuItem} from '../../utils/MenuList';
 
 const Header = () => {
 	return (
@@ -41,33 +42,13 @@ const Header = () => {
 					</div>
 				</div>
 			</div>
-			<nav className="menu">
-				<ul className="menu__list">
-					<li className="menu__item">
-						<NavLink className="link menu__link" to="/catalog">
-							Каталог 2021
-						</NavLink>
-					</li>
-					<li className="menu__item">
-						<NavLink className="link menu__link" to="/delivery">
-							О доставке
-						</NavLink>
-					</li>
-					<li className="menu__item">
-						<NavLink className="link menu__link" to="/payments">
-							Об оплате
-						</NavLink>
-					</li>
-					<li className="menu__item">
-						<NavLink className="link menu__link" to="/about">
-							О нас
-						</NavLink>
-					</li>
-					<li className="menu__item">
-						<NavLink className="link menu__link" to="/contacts">
-							Контакты
-						</NavLink>
-					</li>
+			<nav className={s.menu}>
+				<ul className={s.menu__list}>
+					{MenuList.map((item: MenuItem, index: number) => (
+						<li className={s.menu__item} key={index}>
+							<NavLink className={classNames("link", s.menu__link)} to={item.link}>{item.name}</NavLink>
+						</li>
+					))}
 				</ul>
 				<div className="menu__search">
 					<div className="formElement">

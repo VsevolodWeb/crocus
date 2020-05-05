@@ -62,3 +62,73 @@
 
 		@include respond-below(sm)
 			margin-top: 20px
+
+.menu
+	margin-left: auto
+	padding-left: 50px
+	position: relative
+
+	@include respond-below(lg)
+		display: none
+
+	&__list
+		display: flex
+		list-style-type: none
+		margin-top: 0
+		margin-bottom: 0
+
+	&__item:not(:last-child)
+		margin-right: 36px
+
+	&__link
+		font-weight: 700
+
+	&__search
+		position: absolute
+		top: 100%
+		right: 0
+		margin-top: 20px
+		display: flex
+
+// react-burger-menu override styles
+\:global
+	.bm-burger-button
+		position: fixed
+		width: 24px
+		height: 20px
+		right: 36px
+		top: 46px
+
+		@include respond-above(lg)
+			display: none
+
+	.bm-burger-bars
+		background-color: $color-common
+
+	.bm-cross-button
+		height: 24px
+		width: 24px
+
+	.bm-cross
+		background-color: #bdc3c7
+
+	.bm-menu-wrap
+		position: fixed
+		height: 100%
+
+	.bm-menu
+		background-color: #fff
+		padding: 40px 20px
+
+	.bm-morph-shape
+		fill: #373a47
+
+	.bm-item-list
+		color: #b8b7ad
+		padding: 0.8em
+
+	.bm-item
+		display: inline-block
+
+	.bm-overlay
+		background: rgba(0, 0, 0, 0.3)

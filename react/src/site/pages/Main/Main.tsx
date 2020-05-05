@@ -43,7 +43,7 @@ const Main = () => {
 						</div>
 						<div className="slider__item">
 							<div className="slider__content">
-								<h2 className="slider__title">Огромный выбор растений</h2>
+								<h2 className="slider__title">Огромный выбор растений</h2>
 								<div className="slider__text">
 									<p className="paragraph">Сами выращиваем более 750 наименований: многолетники,  декоративные кустарники, почвопокровные растения,  луковичные и многое другое.</p>
 								</div>
