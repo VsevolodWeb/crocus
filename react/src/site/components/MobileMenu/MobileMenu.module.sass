@@ -1,0 +1,62 @@
+@import "../../styles/abstracts/vars"
+@import "../../styles/abstracts/mixins"
+@import "../../styles/components/link"
+
+
+.mobileMenu
+	&__list
+		display: grid
+		row-gap: 10px
+
+	&__link
+		@extend .link
+
+
+// react-burger-menu override styles
+\:global
+	.bm-burger-button
+		position: fixed
+		width: 24px
+		height: 20px
+		right: 36px
+		top: 46px
+
+		@include respond-above(lg)
+			display: none
+
+	.bm-burger-bars
+		background-color: $color-common
+
+	.bm-cross-button
+		height: 24px
+		width: 24px
+
+		&:hover
+			.bm-cross
+				background-color: $color-common
+
+	.bm-cross
+		background-color: #bdc3c7
+
+	.bm-menu-wrap
+		position: fixed
+		height: 100%
+
+	.bm-menu
+		background-color: #fff
+		padding: 40px 30px
+
+	.bm-morph-shape
+		fill: #373a47
+
+	.bm-item-list
+		padding: 0
+
+	.bm-item
+		&:not(:last-child)
+			padding-bottom: 30px
+			border-bottom: 1px solid #ccc
+			margin-bottom: 30px
+
+	.bm-overlay
+		background-color: rgba(0, 0, 0, 0.3)
