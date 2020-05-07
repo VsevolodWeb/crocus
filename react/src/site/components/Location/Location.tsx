@@ -20,9 +20,12 @@ const Location = () => {
 					<label className="formElement__label" htmlFor="location-search">
 						Поиск по населенным пунктам
 					</label>
-					<input className={classNames("formElement__item", s.location__formElement)}
-						id="location-search" type="search"
-						placeholder="Регион доставки"/>
+					<input
+						className={classNames("formElement__item", s.location__formElement)}
+						id="location-search"
+						type="search"
+						placeholder="Регион доставки"
+					/>
 					<ul className="dropdown__list">
 						<li>
 							<button className="dropdown__button">г. Великие Луки</button>
