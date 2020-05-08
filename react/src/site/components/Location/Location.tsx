@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactTooltipWrapper from "../../utils/ReactTooltipWrapper.util";
 import classNames from "classnames";
 
@@ -6,16 +6,16 @@ import s from "./Location.module.sass";
 
 
 const Location = () => {
+	const [isEditLocation, setEditLocation] = useState(false);
+
+	const toggleEditLocation = () => {
+		setEditLocation(!isEditLocation);
+	};
+
 	return (
 		<div>
-			<div>
-				<a className="link link_dashed link_accent" href="!#">Санкт-Петербург</a>
-				<ReactTooltipWrapper id="city-selection">
-					Ваше местоположение определилось для того, чтобы рассчитать доставку.<br/>
-					Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным пунктом.
-				</ReactTooltipWrapper>
-			</div>
-			<div className="formElement" style={{display: "none"}}>
+			{isEditLocation ?
+			 <div className="formElement">
 				<div className="dropdown">
 					<label className="formElement__label" htmlFor="location-search">
 						Поиск по населенным пунктам
@@ -38,7 +38,15 @@ const Location = () => {
 						</li>
 					</ul>
 				</div>
+			</div> :
+			<div>
+				<a className="link link_dashed link_accent" onClick={toggleEditLocation} href="!#">Санкт-Петербург</a>
+				<ReactTooltipWrapper id="city-selection">
+					Ваше местоположение определилось для того, чтобы рассчитать доставку.<br/>
+					Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным пунктом.
+				</ReactTooltipWrapper>
 			</div>
+			}
 		</div>
 	);
 };

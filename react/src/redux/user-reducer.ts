@@ -23,4 +23,12 @@ const userReducer = (state = initialState, action: any): InitialStateType => {
 	}
 };
 
+// export const setUserPhotoThunkCreator = (photo: string) => async (dispatch: Dispatch<ActionsTypes>) => {
+//     const response = await profileAPI.updateUserPhoto(photo);
+
+//     if(response.resultCode === 0) {
+//         dispatch(setUserPhoto(response.data.photos));
+//     }
+// };
+
 export default userReducer;
