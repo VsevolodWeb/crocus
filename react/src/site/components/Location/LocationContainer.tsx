@@ -1,5 +1,4 @@
 import React from 'react';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
 import {setCurrentLocationThunkCreator} from '../../../redux/user-reducer'
 import Location from './Location';
