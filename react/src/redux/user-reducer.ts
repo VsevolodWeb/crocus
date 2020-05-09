@@ -1,4 +1,7 @@
-const TEST = "TEST";
+import { usersAPI } from './../api/api';
+import { Dispatch } from 'redux';
+
+const SET_CURRENT_LOCATION = "SET_CURRENT_LOCATION";
 
 type InitialStateType = {
 	currentLocation: string | null
@@ -10,12 +13,12 @@ const initialState: InitialStateType = {
 	locationList: null
 };
 
-//type ActionsTypes = SetLoadingActionCreatorType | SwitchStockActionCreatorType;
+type ActionsTypes = SetCurrentLocationType
 
-const userReducer = (state = initialState, action: any): InitialStateType => {
+const userReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
 	switch (action.type) {
-		case TEST: {
-			return state
+		case SET_CURRENT_LOCATION: {
+			return { ...state, currentLocation: action.currentLocation };
 		}
 		default: {
 			return state;
@@ -23,12 +26,18 @@ const userReducer = (state = initialState, action: any): InitialStateType => {
 	}
 };
 
-// export const setUserPhotoThunkCreator = (photo: string) => async (dispatch: Dispatch<ActionsTypes>) => {
-//     const response = await profileAPI.updateUserPhoto(photo);
+type SetCurrentLocationType = {
+	type: typeof SET_CURRENT_LOCATION
+	currentLocation: string
+}
+const setCurrentLocation = (currentLocation: string): SetCurrentLocationType => ({ type: SET_CURRENT_LOCATION, currentLocation });
 
-//     if(response.resultCode === 0) {
-//         dispatch(setUserPhoto(response.data.photos));
-//     }
-// };
+export const setCurrentLocationThunkCreator = () => async (dispatch: Dispatch<ActionsTypes>) => {
+	const response = await usersAPI.getCurrentLocation();
+
+	if (response.resultCode === 0) {
+		dispatch(setCurrentLocation(response.data.ip));
+	}
+};
 
 export default userReducer;
