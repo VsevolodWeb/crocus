@@ -2,7 +2,7 @@ import React from 'react';
 import { slide as BurgerMenu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
 import MenuList, { MenuItem } from '../../utils/MenuList';
-import Location from '../Location/Location';
+import LocationContainer from '../Location/LocationContainer';
 
 import s from './MobileMenu.module.sass';
 
@@ -18,7 +18,7 @@ const Menu = () => (
 				</div>
 			</div>
 			<div className={s.mobileMenu__item}>
-				<Location/>
+				<LocationContainer/>
 			</div>
 		</BurgerMenu>
 	</>
