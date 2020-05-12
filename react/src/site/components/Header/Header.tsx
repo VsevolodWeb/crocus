@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './Header.module.sass';
-import logo from '../../assets/img/logo.svg';
 import {Link, NavLink} from "react-router-dom";
 import classNames from "classnames";
-import Location from "../Location/Location";
 
+import logo from '../../assets/img/logo.svg';
 import MenuList, {MenuItem} from '../../utils/MenuList';
+import LocationContainer from "../Location/LocationContainer";
+
 
 const Header = () => {
 	return (
@@ -14,7 +15,7 @@ const Header = () => {
 				<img src={logo} alt="Крокус Великие Луки"/>
 			</Link>
 			<div className={s.header__location}>
-				<Location/>
+				<LocationContainer/>
 			</div>
 			<nav className={s.menu}>
 				<ul className={s.menu__list}>

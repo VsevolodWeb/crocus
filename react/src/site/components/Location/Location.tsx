@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import ReactTooltipWrapper from "../../utils/ReactTooltipWrapper.util";
 import classNames from "classnames";
 
+import ReactTooltipWrapper from "../../utils/ReactTooltipWrapper.util";
 import s from "./Location.module.sass";
 
+type LocationPropsType = {
+	currentLocation: string | null
+}
 
-const Location = () => {
+const Location: React.FC<LocationPropsType> = props => {
 	const [isEditLocation, setEditLocation] = useState(false);
 
 	const toggleEditLocation = () => {
@@ -40,7 +43,7 @@ const Location = () => {
 				</div>
 			</div> :
 			<div>
-				<a className="link link_dashed link_accent" onClick={toggleEditLocation} href="!#">Санкт-Петербург</a>
+				<a className="link link_dashed link_accent" onClick={toggleEditLocation} href="!#">{props.currentLocation}</a>
 				<ReactTooltipWrapper id="city-selection">
 					Ваше местоположение определилось для того, чтобы рассчитать доставку.<br/>
 					Пожалуйста, выберите другой регион, если он не совпадает с вашим населенным пунктом.

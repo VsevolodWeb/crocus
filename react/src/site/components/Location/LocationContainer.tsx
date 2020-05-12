@@ -5,7 +5,9 @@ import Location from './Location';
 import { AppStateType } from '../../../redux/store';
 
 
-type MapStateToPropsType = {}
+type MapStateToPropsType = {
+	currentLocation: string | null
+}
 type MapDispatchToProps = {
 	setCurrentLocation: () => void
 }
@@ -19,13 +21,15 @@ class LocationContainer extends React.Component<PropsType> {
 	}
 
 	render() {
-		return <Location />
+		return <Location currentLocation={this.props.currentLocation} />
 	}
 }
 
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-	return {}
+	return {
+		currentLocation: state.user.currentLocation
+	}
 };
 
 

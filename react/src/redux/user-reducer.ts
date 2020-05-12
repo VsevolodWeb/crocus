@@ -35,8 +35,8 @@ const setCurrentLocation = (currentLocation: string): SetCurrentLocationType => 
 export const setCurrentLocationThunkCreator = () => async (dispatch: Dispatch<ActionsTypes>) => {
 	const response = await usersAPI.getCurrentLocation();
 
-	if (response.resultCode === 0) {
-		dispatch(setCurrentLocation(response.data.ip));
+	if (response) {
+		dispatch(setCurrentLocation(response.ip));
 	}
 };
 
