@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import {setCurrentLocationThunkCreator} from '../../../redux/user-reducer'
 import Location from './Location';
@@ -15,15 +15,15 @@ type OwnType = {}
 type PropsType = MapStateToPropsType & MapDispatchToProps & OwnType;
 
 
-class LocationContainer extends React.Component<PropsType> {
-	componentDidMount() {
-		this.props.setCurrentLocation();
-	}
+const LocationContainer: React.FC<PropsType> = props => {
+	const {currentLocation, setCurrentLocation} = props;
 
-	render() {
-		return <Location currentLocation={this.props.currentLocation} />
-	}
-}
+	useEffect(() => {
+		setCurrentLocation();
+	}, [setCurrentLocation]);
+
+	return <Location currentLocation={currentLocation} />
+};
 
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
